@@ -10,19 +10,19 @@ import org.lwjgl.opengl.GL11;
  * Created using Tabula 5.0.0
  */
 public class ModelChaosCrystal extends ModelBase {
-    public ModelRenderer base;
-    public ModelRenderer glass;
-    public ModelRenderer cube;
-    public ModelRenderer ringBase1;
-    public ModelRenderer RingSegment1;
-    public ModelRenderer RingSegment2;
-    public ModelRenderer RingSegment3;
-    public ModelRenderer RingSegment4;
-    public ModelRenderer ringBase2;
-    public ModelRenderer RingSegment1_1;
-    public ModelRenderer RingSegment2_1;
-    public ModelRenderer RingSegment3_1;
-    public ModelRenderer RingSegment4_1;
+    public final ModelRenderer base;
+    public final ModelRenderer glass;
+    public final ModelRenderer cube;
+    public final ModelRenderer ringBase1;
+    public final ModelRenderer RingSegment1;
+    public final ModelRenderer RingSegment2;
+    public final ModelRenderer RingSegment3;
+    public final ModelRenderer RingSegment4;
+    public final ModelRenderer ringBase2;
+    public final ModelRenderer RingSegment1_1;
+    public final ModelRenderer RingSegment2_1;
+    public final ModelRenderer RingSegment3_1;
+    public final ModelRenderer RingSegment4_1;
 
     public ModelChaosCrystal(boolean hasBase) {
         this.textureWidth = 64;

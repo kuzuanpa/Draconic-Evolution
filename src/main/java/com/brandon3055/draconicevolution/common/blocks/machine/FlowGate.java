@@ -37,8 +37,8 @@ public class FlowGate extends BlockDE {
 
     IIcon icon_input;
     IIcon icon_output;
-    IIcon[] icon_fluid = new IIcon[4];
-    IIcon[] icon_flux = new IIcon[4];
+    final IIcon[] icon_fluid = new IIcon[4];
+    final IIcon[] icon_flux = new IIcon[4];
 
     public FlowGate() {
         this.setBlockName("flowGate");

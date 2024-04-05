@@ -60,153 +60,105 @@ public class ParticleGenPacket implements IMessage {
                 //System.out.println(buttonId + " " + value);
                 switch (message.buttonId) {
                     case 0://red
-                        gen.red = (int) message.value;
-                        break;
-                    case 1://green
-                        gen.green = (int) message.value;
-                        break;
-                    case 2://blue
-                        gen.blue = (int) message.value;
-                        break;
-                    case 3://mx
-                        gen.motion_x = (float) message.value / 1000F;
-                        break;
-                    case 4://my
-                        gen.motion_y = (float) message.value / 1000F;
-                        break;
-                    case 5://mz
-                        gen.motion_z = (float) message.value / 1000F;
-                        break;
                     case 6://ged
                         gen.red = (int) message.value;
                         break;
-                    case 7://green
+                    case 1://green
+                    case 7:
                         gen.green = (int) message.value;
                         break;
-                    case 8://blue
+                    case 2://blue
+                    case 8:
                         gen.blue = (int) message.value;
                         break;
-                    case 9://mx
+                    case 3://mx
+                    case 9:
                         gen.motion_x = (float) message.value / 1000F;
                         break;
-                    case 10://my
+                    case 4://my
+                    case 10:
                         gen.motion_y = (float) message.value / 1000F;
                         break;
-                    case 11://mz
+                    case 5://mz
+                    case 11:
                         gen.motion_z = (float) message.value / 1000F;
                         break;
                     case 12://red
-                        gen.random_red = (int) message.value;
-                        break;
-                    case 13://green
-                        gen.random_green = (int) message.value;
-                        break;
-                    case 14://blue
-                        gen.random_blue = (int) message.value;
-                        break;
-                    case 15://mx
-                        gen.random_motion_x = (float) message.value / 1000F;
-                        break;
-                    case 16://my
-                        gen.random_motion_y = (float) message.value / 1000F;
-                        break;
-                    case 17://mz
-                        gen.random_motion_z = (float) message.value / 1000F;
-                        break;
                     case 18://ged
                         gen.random_red = (int) message.value;
                         break;
-                    case 19://green
+                    case 13://green
+                    case 19:
                         gen.random_green = (int) message.value;
                         break;
-                    case 20://blue
+                    case 14://blue
+                    case 20:
                         gen.random_blue = (int) message.value;
                         break;
-                    case 21://mx
+                    case 15://mx
+                    case 21:
                         gen.random_motion_x = (float) message.value / 1000F;
                         break;
-                    case 22://my
+                    case 16://my
+                    case 22:
                         gen.random_motion_y = (float) message.value / 1000F;
                         break;
-                    case 23://mz
+                    case 17://mz
+                    case 23:
                         gen.random_motion_z = (float) message.value / 1000F;
                         break;
                     case 24://Life +
-                        gen.life = (int) message.value;
-                        break;
                     case 25://Life -
                         gen.life = (int) message.value;
                         break;
                     case 26://RLife +
-                        gen.random_life = (int) message.value;
-                        break;
                     case 27://RLife -
                         gen.random_life = (int) message.value;
                         break;
                     case 28://Size +
-                        gen.scale = (float) message.value / 100F;
-                        break;
                     case 29://Size -
                         gen.scale = (float) message.value / 100F;
                         break;
                     case 30://RSize +
-                        gen.random_scale = (float) message.value / 100F;
-                        break;
                     case 31://RSize -
                         gen.random_scale = (float) message.value / 100F;
                         break;
                     case 32://SX +
-                        gen.page = (int) message.value;
-                        break;
+                    case 55://Back
+                    case 54://Info Page (3)
                     case 33://SX -
                         gen.page = (int) message.value;
                         break;
                     case 34://SX +
-                        gen.spawn_x = (float) message.value / 100F;
-                        break;
                     case 35://SX -
                         gen.spawn_x = (float) message.value / 100F;
                         break;
                     case 36://RSX +
-                        gen.random_spawn_x = (float) message.value / 100F;
-                        break;
                     case 37://RSX -
                         gen.random_spawn_x = (float) message.value / 100F;
                         break;
                     case 38://SY +
-                        gen.spawn_y = (float) message.value / 100F;
-                        break;
                     case 39://SY -
                         gen.spawn_y = (float) message.value / 100F;
                         break;
                     case 40://RSY +
-                        gen.random_spawn_y = (float) message.value / 100F;
-                        break;
                     case 41://RSY -
                         gen.random_spawn_y = (float) message.value / 100F;
                         break;
                     case 42://SZ +
-                        gen.spawn_z = (float) message.value / 100F;
-                        break;
                     case 43://SZ -
                         gen.spawn_z = (float) message.value / 100F;
                         break;
                     case 44://RSZ +
-                        gen.random_spawn_z = (float) message.value / 100F;
-                        break;
                     case 45://RSZ -
                         gen.random_spawn_z = (float) message.value / 100F;
                         break;
                     case 46://Delay -
-                        gen.spawn_rate = (int) message.value;
-                        break;
-                    case 47://Delay -
+                    case 47:
                         gen.spawn_rate = (int) message.value;
                         break;
                     case 48://Fade -
-                        gen.fade = (int) message.value;
-                        break;
-                    case 49://Fade -
+                    case 49:
                         gen.fade = (int) message.value;
                         break;
                     case 50://Collision -
@@ -216,16 +168,8 @@ public class ParticleGenPacket implements IMessage {
                         gen.selected_particle = (int) message.value;
                         break;
                     case 52://Gravity +
-                        gen.gravity = (float) message.value / 1000F;
-                        break;
                     case 53://Gravity -
                         gen.gravity = (float) message.value / 1000F;
-                        break;
-                    case 54://Info Page (3)
-                        gen.page = (int) message.value;
-                        break;
-                    case 55://Back
-                        gen.page = (int) message.value;
                         break;
                     case 58://Back
                         LogHelper.info(message.value);
@@ -233,50 +177,34 @@ public class ParticleGenPacket implements IMessage {
                         break;
 
                     case 100: //beam red +
-                        gen.beam_red = message.value;
-                        break;
-                    case 101: //beam green +
-                        gen.beam_green = message.value;
-                        break;
-                    case 102: //beam blue +
-                        gen.beam_blue = message.value;
-                        break;
-                    case 103: //beam pitch +
-                        gen.beam_pitch = (float) message.value / 100F;
-                        break;
-                    case 104: //beam yaw +
-                        gen.beam_yaw = (float) message.value / 100F;
-                        break;
-                    case 105: //beam length +
-                        gen.beam_length = (float) message.value / 100F;
-                        break;
-                    case 106: //beam rotation +
-                        gen.beam_rotation = (float) message.value / 100F;
-                        break;
-                    case 107: //beam scale +
-                        gen.beam_scale = (float) message.value / 100F;
-                        break;
                     case 108: //beam red -
                         gen.beam_red = message.value;
                         break;
+                    case 101: //beam green +
                     case 109: //beam green -
                         gen.beam_green = message.value;
                         break;
+                    case 102: //beam blue +
                     case 110: //beam blue -
                         gen.beam_blue = message.value;
                         break;
+                    case 103: //beam pitch +
                     case 111: //beam pitch -
                         gen.beam_pitch = (float) message.value / 100F;
                         break;
+                    case 104: //beam yaw +
                     case 112: //beam yaw -
                         gen.beam_yaw = (float) message.value / 100F;
                         break;
+                    case 105: //beam length +
                     case 113: //beam length -
                         gen.beam_length = (float) message.value / 100F;
                         break;
+                    case 106: //beam rotation +
                     case 114: //beam rotation -
                         gen.beam_rotation = (float) message.value / 100F;
                         break;
+                    case 107: //beam scale +
                     case 115: //beam scale -
                         gen.beam_scale = (float) message.value / 100F;
                         break;

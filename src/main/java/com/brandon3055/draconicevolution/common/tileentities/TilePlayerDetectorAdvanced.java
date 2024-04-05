@@ -19,12 +19,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TilePlayerDetectorAdvanced extends TileEntity implements IInventory {
-    public String[] names = new String[42];
-    private ItemStack[] items;
+    public final String[] names = new String[42];
+    private final ItemStack[] items;
     public boolean whiteList = false;
     public int range = 10;
     private int tick = 0;
-    private int scanRate = 5;
+    private final int scanRate = 5;
     public boolean output = false;
     public boolean outputInverted = false;
     private List<EntityLiving> EntityList;
@@ -56,9 +56,7 @@ public class TilePlayerDetectorAdvanced extends TileEntity implements IInventory
         findEntitys();
 
         boolean b = false;
-        Iterator<EntityLiving> i = EntityList.iterator();
-        while (i.hasNext()) {
-            Entity ent = i.next();
+        for (Entity ent : EntityList) {
             if (!(ent instanceof EntityPlayer)) return false;
 
             String name = ((EntityPlayer) ent).getCommandSenderName();
@@ -108,8 +106,8 @@ public class TilePlayerDetectorAdvanced extends TileEntity implements IInventory
     public boolean isPlayerListed(String name) {
         if (name == null) return false;
 
-        for (int i = 0; i < names.length; i++) {
-            if (names[i].equals(name)) return true;
+        for (String s : names) {
+            if (s.equals(name)) return true;
         }
         return false;
     }

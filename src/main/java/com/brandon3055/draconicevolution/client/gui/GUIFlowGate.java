@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class GUIFlowGate extends GuiScreen {
 
-    public TileGate tile;
+    public final TileGate tile;
 
     public GUIFlowGate(TileGate gate) {
         this.tile = gate;

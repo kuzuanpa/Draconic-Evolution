@@ -29,8 +29,8 @@ import java.util.List;
  * Created by Brandon on 27/06/2014.
  */
 public class TileDraconiumChest extends TileEntity implements ISidedInventory, IEnergyReceiver, ICustomItemData {
-    ItemStack[] items = new ItemStack[240];
-    ItemStack[] itemsCrafting = new ItemStack[10];
+    final ItemStack[] items = new ItemStack[240];
+    final ItemStack[] itemsCrafting = new ItemStack[10];
     private int ticksSinceSync = -1;
     public float prevLidAngle;
     public float lidAngle;
@@ -42,7 +42,7 @@ public class TileDraconiumChest extends TileEntity implements ISidedInventory, I
     public boolean editMode = false;
     public boolean lockOutputSlots = false;
     private String customName;
-    public EnergyStorage energy = new EnergyStorage(1000000, 10000, 0);
+    public final EnergyStorage energy = new EnergyStorage(1000000, 10000, 0);
 
     /**
      * Current smelting progress. Ranges from 0 to 1000

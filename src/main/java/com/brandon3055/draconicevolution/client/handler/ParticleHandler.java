@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 
 @SideOnly(Side.CLIENT)
 public class ParticleHandler {
-    private static Minecraft mc = Minecraft.getMinecraft();
-    private static World theWorld = mc.theWorld;
+    private static final Minecraft mc = Minecraft.getMinecraft();
+    private static final World theWorld = mc.theWorld;
 
     public static EntityFX spawnParticle(String particleName, double x, double y, double z, double motionX, double motionY, double motionZ, float scale) {
         if (mc != null && mc.renderViewEntity != null && mc.effectRenderer != null) {
@@ -67,9 +67,6 @@ public class ParticleHandler {
         double var15 = mc.renderViewEntity.posX - x;
         double var17 = mc.renderViewEntity.posY - y;
         double var19 = mc.renderViewEntity.posZ - z;
-        if (var15 * var15 + var17 * var17 + var19 * var19 > vewRange * vewRange) {
-            return false;
-        }
-        return true;
+        return !(var15 * var15 + var17 * var17 + var19 * var19 > vewRange * vewRange);
     }
 }

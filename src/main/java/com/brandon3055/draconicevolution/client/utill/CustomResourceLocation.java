@@ -9,8 +9,8 @@ import net.minecraft.util.ResourceLocation;
  */
 public class CustomResourceLocation extends ResourceLocation {
 
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
 
     public CustomResourceLocation(String texturePath, int width, int height) {
         super(References.MODID.toLowerCase(), "textures/gui/manualimages/" + texturePath);

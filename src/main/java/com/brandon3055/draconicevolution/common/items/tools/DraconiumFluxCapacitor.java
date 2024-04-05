@@ -31,7 +31,7 @@ import net.minecraft.world.World;
  * Created by Brandon on 24/11/2014.
  */
 public class DraconiumFluxCapacitor extends RFItemBase implements IUpgradableItem {
-    IIcon[] icons = new IIcon[2];
+    final IIcon[] icons = new IIcon[2];
 
     public DraconiumFluxCapacitor() {
         this.setUnlocalizedName(Strings.draconiumFluxCapacitorName);

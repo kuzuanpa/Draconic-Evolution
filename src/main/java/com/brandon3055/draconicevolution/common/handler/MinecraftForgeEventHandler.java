@@ -67,7 +67,7 @@ import java.util.Random;
 @SuppressWarnings("unused")
 public class MinecraftForgeEventHandler {
 
-    Random random = new Random();
+    final Random random = new Random();
     private static Method becomeAngryAt;
 
     public static double maxSpeed = 10F;
@@ -241,11 +241,7 @@ public class MinecraftForgeEventHandler {
                 return false;
             }
         }
-        if (ConfigHandler.spawnerListType) {
-            return false;
-        } else {
-            return true;
-        }
+        return !ConfigHandler.spawnerListType;
     }
 
     private boolean changeBlock(ExtendedBlockStorage storage, int x, int y, int z) {

@@ -16,10 +16,10 @@ import org.lwjgl.opengl.GL11;
 public class GUIParticleGenerator extends GuiScreen {
     private final int xSize = 212;
     private final int ySize = 198;
-    private ResourceLocation guiTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/ParticleGenerator.png");
+    private final ResourceLocation guiTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/ParticleGenerator.png");
     private int page = 1;
     private int infoPage = 0;
-    private boolean hasInitialized = false;
+    private final boolean hasInitialized = false;
 
     //Particle variables
     private boolean particles_enabled = true;
@@ -50,7 +50,7 @@ public class GUIParticleGenerator extends GuiScreen {
     private int spawn_rate = 0;
     private boolean collide = false;
     private int selected_particle = 1;
-    private int selected_max = 3;
+    private final int selected_max = 3;
     private float gravity = 0F;
 
     //Beam variables
@@ -72,7 +72,7 @@ public class GUIParticleGenerator extends GuiScreen {
     //Info Page
     //particle selection
 
-    private TileParticleGenerator tile;
+    private final TileParticleGenerator tile;
 
     public GUIParticleGenerator(TileParticleGenerator tile, EntityPlayer player) {
         super();
@@ -80,7 +80,7 @@ public class GUIParticleGenerator extends GuiScreen {
         syncWithServer();
     }
 
-    String[] InfoText = {"" + "The Particle Generator is a decorative device that allows you to create your own custom particle effects.                                                                 " + "It is fairly easy you use this device you simply adjust the fields (variables) in the interface to change how the generated particles look and behave.                                                                                            " + "This block is a work in progress and new features and particles are likely to be added in future versions.                                                         " + "The following is a list of all of the fields in the interface and what they do.", "The first thing to note is that most fields have a random modifier which will add a random number between 0 and whatever max (or min) value you give it to the field.                                                                                      " + "-The first 3 fields (Red, Green & Blue) control the colour of the particle. Most people should be familiar with this colour system if not google RGB colours. Note: the max value for each colour can not go higher then 255 so the colour field limits the random modifier e.g. if the colour field is set to 255 and the random modifier is set to 20 the result will always be 255", "-The next 3 fields (Motion X, Y & Z) control the direction and speed of the particle                                                                                            " + "-The \"Life\" field sets how long (in ticks) before the particle despawns.                                                       " + "-The \"Size\" field sets the size of the particle.                                                                                           " + "-The next 3 fields (Spawn X, Y & Z) Sets the spawn location of the particle (relative to the location of the particle generator)", "-The \"Delay\" field sets the delay (in ticks) between each particle spawn e.g. 1=20/s, 20=1/s, 100=1/5s                                                                    " + "-The \"Fade\" field sets how long (in ticks) it takes the partile to fade out of existance. Note: This adds to the life of the particle                                                                                  " + "-The \"Gravity\" field sets how the particle is affected by gravity.                                                              " + "-\"Block Collision\" Toggles weather or not the particle will collide with blocks                                                     " + "-\"Particle Selected\" Switches between the different particles available.", EnumChatFormatting.DARK_RED + "              Redstone Control" + EnumChatFormatting.BLACK + "\nBy default a redstone signal is required for the generator to run." + "\n\nHowever if you shift right click the generator with an empty hand it will switch to inverted mode." + "\nThe redstone mode is indicated by the 8 cubes at the corners of the block.", EnumChatFormatting.DARK_RED + "              Computer Control" + EnumChatFormatting.BLACK + "\nThe Generator can be controlled via a computer" + "\nIt exposes a relatively straight forward API:" + "\n\n  setGeneratorProperty(property, value)\n  getGeneratorState()\n  resetGeneratorState()" + "\n\nGenerator state is obtained as a whole from getGeneratorState, whereas properties are modified one at a time using setGeneratorProperty. Property names are strings and mostly correspond to button labels in the GUI."};
+    final String[] InfoText = {"" + "The Particle Generator is a decorative device that allows you to create your own custom particle effects.                                                                 " + "It is fairly easy you use this device you simply adjust the fields (variables) in the interface to change how the generated particles look and behave.                                                                                            " + "This block is a work in progress and new features and particles are likely to be added in future versions.                                                         " + "The following is a list of all of the fields in the interface and what they do.", "The first thing to note is that most fields have a random modifier which will add a random number between 0 and whatever max (or min) value you give it to the field.                                                                                      " + "-The first 3 fields (Red, Green & Blue) control the colour of the particle. Most people should be familiar with this colour system if not google RGB colours. Note: the max value for each colour can not go higher then 255 so the colour field limits the random modifier e.g. if the colour field is set to 255 and the random modifier is set to 20 the result will always be 255", "-The next 3 fields (Motion X, Y & Z) control the direction and speed of the particle                                                                                            " + "-The \"Life\" field sets how long (in ticks) before the particle despawns.                                                       " + "-The \"Size\" field sets the size of the particle.                                                                                           " + "-The next 3 fields (Spawn X, Y & Z) Sets the spawn location of the particle (relative to the location of the particle generator)", "-The \"Delay\" field sets the delay (in ticks) between each particle spawn e.g. 1=20/s, 20=1/s, 100=1/5s                                                                    " + "-The \"Fade\" field sets how long (in ticks) it takes the partile to fade out of existance. Note: This adds to the life of the particle                                                                                  " + "-The \"Gravity\" field sets how the particle is affected by gravity.                                                              " + "-\"Block Collision\" Toggles weather or not the particle will collide with blocks                                                     " + "-\"Particle Selected\" Switches between the different particles available.", EnumChatFormatting.DARK_RED + "              Redstone Control" + EnumChatFormatting.BLACK + "\nBy default a redstone signal is required for the generator to run." + "\n\nHowever if you shift right click the generator with an empty hand it will switch to inverted mode." + "\nThe redstone mode is indicated by the 8 cubes at the corners of the block.", EnumChatFormatting.DARK_RED + "              Computer Control" + EnumChatFormatting.BLACK + "\nThe Generator can be controlled via a computer" + "\nIt exposes a relatively straight forward API:" + "\n\n  setGeneratorProperty(property, value)\n  getGeneratorState()\n  resetGeneratorState()" + "\n\nGenerator state is obtained as a whole from getGeneratorState, whereas properties are modified one at a time using setGeneratorProperty. Property names are strings and mostly correspond to button labels in the GUI."};
 
     //@formatter:off
     @Override
@@ -161,131 +161,131 @@ public class GUIParticleGenerator extends GuiScreen {
 
         switch (button.id) {
             case 0://Red +
-                red = (red + value) > 255 ? 255 : red + value;
+                red = Math.min((red + value), 255);
                 packetValue = (short) red;
                 break;
             case 1://Green +
-                green = (green + value) > 255 ? 255 : green + value;
+                green = Math.min((green + value), 255);
                 packetValue = (short) green;
                 break;
             case 2://Blue +
-                blue = (blue + value) > 255 ? 255 : blue + value;
+                blue = Math.min((blue + value), 255);
                 packetValue = (short) blue;
                 break;
             case 3://MX +
-                motion_x = (motion_x + value_F) > 5F ? 5F : motion_x + value_F;
+                motion_x = Math.min((motion_x + value_F), 5F);
                 packetValue = (short) (motion_x * 1000F);
                 break;
             case 4://MY +
-                motion_y = (motion_y + value_F) > 5F ? 5F : motion_y + value_F;
+                motion_y = Math.min((motion_y + value_F), 5F);
                 packetValue = (short) (motion_y * 1000F);
                 break;
             case 5://MZ +
-                motion_z = (motion_z + value_F) > 5F ? 5F : motion_z + value_F;
+                motion_z = Math.min((motion_z + value_F), 5F);
                 packetValue = (short) (motion_z * 1000F);
                 break;
             case 6://Red -
-                red = (red - value) < 0 ? 0 : red - value;
+                red = Math.max((red - value), 0);
                 packetValue = (short) red;
                 break;
             case 7://Green -
-                green = (green - value) < 0 ? 0 : green - value;
+                green = Math.max((green - value), 0);
                 packetValue = (short) green;
                 break;
             case 8://Blue -
-                blue = (blue - value) < 0 ? 0 : blue - value;
+                blue = Math.max((blue - value), 0);
                 packetValue = (short) blue;
                 break;
             case 9://MX -
-                motion_x = (motion_x - value_F) < -5F ? -5F : motion_x - value_F;
+                motion_x = Math.max((motion_x - value_F), -5F);
                 packetValue = (short) (motion_x * 1000F);
                 break;
             case 10://MY -
-                motion_y = (motion_y - value_F) < -5F ? -5F : motion_y - value_F;
+                motion_y = Math.max((motion_y - value_F), -5F);
                 packetValue = (short) (motion_y * 1000F);
                 break;
             case 11://MZ -
-                motion_z = (motion_z - value_F) < -5F ? -5F : motion_z - value_F;
+                motion_z = Math.max((motion_z - value_F), -5F);
                 packetValue = (short) (motion_z * 1000F);
                 break;
             case 12://RRed +
-                random_red = (random_red + value) > 255 ? 255 : random_red + value;
+                random_red = Math.min((random_red + value), 255);
                 packetValue = (short) random_red;
                 break;
             case 13://RGreen +
-                random_green = (random_green + value) > 255 ? 255 : random_green + value;
+                random_green = Math.min((random_green + value), 255);
                 packetValue = (short) random_green;
                 break;
             case 14://RBlue +
-                random_blue = (random_blue + value) > 255 ? 255 : random_blue + value;
+                random_blue = Math.min((random_blue + value), 255);
                 packetValue = (short) random_blue;
                 break;
             case 15://RMX +
-                random_motion_x = (random_motion_x + value_F) > 5F ? 5F : random_motion_x + value_F;
+                random_motion_x = Math.min((random_motion_x + value_F), 5F);
                 packetValue = (short) (random_motion_x * 1000F);
                 break;
             case 16://RMY +
-                random_motion_y = (random_motion_y + value_F) > 5F ? 5F : random_motion_y + value_F;
+                random_motion_y = Math.min((random_motion_y + value_F), 5F);
                 packetValue = (short) (random_motion_y * 1000F);
                 break;
             case 17://RMZ +
-                random_motion_z = (random_motion_z + value_F) > 5F ? 5F : random_motion_z + value_F;
+                random_motion_z = Math.min((random_motion_z + value_F), 5F);
                 packetValue = (short) (random_motion_z * 1000F);
                 break;
             case 18://RRed -
-                random_red = (random_red - value) < 0 ? 0 : random_red - value;
+                random_red = Math.max((random_red - value), 0);
                 packetValue = (short) random_red;
                 break;
             case 19://RGreen -
-                random_green = (random_green - value) < 0 ? 0 : random_green - value;
+                random_green = Math.max((random_green - value), 0);
                 packetValue = (short) random_green;
                 break;
             case 20://RBlue -
-                random_blue = (random_blue - value) < 0 ? 0 : random_blue - value;
+                random_blue = Math.max((random_blue - value), 0);
                 packetValue = (short) random_blue;
                 break;
             case 21://RMX -
-                random_motion_x = (random_motion_x - value_F) < -5F ? -5F : random_motion_x - value_F;
+                random_motion_x = Math.max((random_motion_x - value_F), -5F);
                 packetValue = (short) (random_motion_x * 1000F);
                 break;
             case 22://RMY -
-                random_motion_y = (random_motion_y - value_F) < -5F ? -5F : random_motion_y - value_F;
+                random_motion_y = Math.max((random_motion_y - value_F), -5F);
                 packetValue = (short) (random_motion_y * 1000F);
                 break;
             case 23://RMZ -
-                random_motion_z = (random_motion_z - value_F) < -5F ? -5F : random_motion_z - value_F;
+                random_motion_z = Math.max((random_motion_z - value_F), -5F);
                 packetValue = (short) (random_motion_z * 1000F);
                 break;
             case 24://Life +
-                life = (life + value) > 1000 ? 1000 : life + value;
+                life = Math.min((life + value), 1000);
                 packetValue = (short) life;
                 break;
             case 25://Life -
-                life = (life - value) < 0 ? 0 : life - value;
+                life = Math.max((life - value), 0);
                 packetValue = (short) life;
                 break;
             case 26://RLife +
-                random_life = (random_life + value) > 1000 ? 1000 : random_life + value;
+                random_life = Math.min((random_life + value), 1000);
                 packetValue = (short) random_life;
                 break;
             case 27://RLife -
-                random_life = (random_life - value) < 0 ? 0 : random_life - value;
+                random_life = Math.max((random_life - value), 0);
                 packetValue = (short) random_life;
                 break;
             case 28://Size +
-                scale = (scale + value_F * 10F) > 50F ? 50F : scale + value_F * 10F;
+                scale = Math.min((scale + value_F * 10F), 50F);
                 packetValue = (short) (scale * 100F);
                 break;
             case 29://Size -
-                scale = (scale - value_F * 10F) < 0.01F ? 0.01F : scale - value_F * 10F;
+                scale = Math.max((scale - value_F * 10F), 0.01F);
                 packetValue = (short) (scale * 100F);
                 break;
             case 30://RSize +
-                random_scale = (random_scale + value_F * 10F) > 50F ? 50F : random_scale + value_F * 10F;
+                random_scale = Math.min((random_scale + value_F * 10F), 50F);
                 packetValue = (short) (random_scale * 100F);
                 break;
             case 31://RSize -
-                random_scale = (random_scale - value_F * 10F) < 0.0F ? 0.0F : random_scale - value_F * 10F;
+                random_scale = Math.max((random_scale - value_F * 10F), 0.0F);
                 packetValue = (short) (random_scale * 100F);
                 break;
             case 32://Page 2
@@ -299,67 +299,67 @@ public class GUIParticleGenerator extends GuiScreen {
                 packetValue = (short) page;
                 break;
             case 34://SX +
-                spawn_x = (spawn_x + value_F * 100F) > 50F ? 50F : spawn_x + value_F * 100F;
+                spawn_x = Math.min((spawn_x + value_F * 100F), 50F);
                 packetValue = (short) (spawn_x * 100F);
                 break;
             case 35://SX -
-                spawn_x = (spawn_x - value_F * 100F) < -50F ? -50F : spawn_x - value_F * 100F;
+                spawn_x = Math.max((spawn_x - value_F * 100F), -50F);
                 packetValue = (short) (spawn_x * 100F);
                 break;
             case 36://RSX +
-                random_spawn_x = (random_spawn_x + value_F * 100F) > 50F ? 50F : random_spawn_x + value_F * 100F;
+                random_spawn_x = Math.min((random_spawn_x + value_F * 100F), 50F);
                 packetValue = (short) (random_spawn_x * 100F);
                 break;
             case 37://RSX -
-                random_spawn_x = (random_spawn_x - value_F * 100F) < -50F ? -50F : random_spawn_x - value_F * 100F;
+                random_spawn_x = Math.max((random_spawn_x - value_F * 100F), -50F);
                 packetValue = (short) (random_spawn_x * 100F);
                 break;
             case 38://SY +
-                spawn_y = (spawn_y + value_F * 100F) > 50F ? 50F : spawn_y + value_F * 100F;
+                spawn_y = Math.min((spawn_y + value_F * 100F), 50F);
                 packetValue = (short) (spawn_y * 100F);
                 break;
             case 39://SY -
-                spawn_y = (spawn_y - value_F * 100F) < -50F ? -50F : spawn_y - value_F * 100F;
+                spawn_y = Math.max((spawn_y - value_F * 100F), -50F);
                 packetValue = (short) (spawn_y * 100F);
                 break;
             case 40://RSY +
-                random_spawn_y = (random_spawn_y + value_F * 100F) > 50F ? 50F : random_spawn_y + value_F * 100F;
+                random_spawn_y = Math.min((random_spawn_y + value_F * 100F), 50F);
                 packetValue = (short) (random_spawn_y * 100F);
                 break;
             case 41://RSY -
-                random_spawn_y = (random_spawn_y - value_F * 100F) < -50F ? -50F : random_spawn_y - value_F * 100F;
+                random_spawn_y = Math.max((random_spawn_y - value_F * 100F), -50F);
                 packetValue = (short) (random_spawn_y * 100F);
                 break;
             case 42://SZ +
-                spawn_z = (spawn_z + value_F * 100F) > 50F ? 50F : spawn_z + value_F * 100F;
+                spawn_z = Math.min((spawn_z + value_F * 100F), 50F);
                 packetValue = (short) (spawn_z * 100F);
                 break;
             case 43://SZ -
-                spawn_z = (spawn_z - value_F * 100F) < -50F ? -50F : spawn_z - value_F * 100F;
+                spawn_z = Math.max((spawn_z - value_F * 100F), -50F);
                 packetValue = (short) (spawn_z * 100F);
                 break;
             case 44://RSZ +
-                random_spawn_z = (random_spawn_z + value_F * 100F) > 50F ? 50F : random_spawn_z + value_F * 100F;
+                random_spawn_z = Math.min((random_spawn_z + value_F * 100F), 50F);
                 packetValue = (short) (random_spawn_z * 100F);
                 break;
             case 45://RSZ -
-                random_spawn_z = (random_spawn_z - value_F * 100F) < -50F ? -50F : random_spawn_z - value_F * 100F;
+                random_spawn_z = Math.max((random_spawn_z - value_F * 100F), -50F);
                 packetValue = (short) (random_spawn_z * 100F);
                 break;
             case 46://Delay +
-                spawn_rate = (spawn_rate + value) > 200 ? 200 : spawn_rate + value;
+                spawn_rate = Math.min((spawn_rate + value), 200);
                 packetValue = (short) spawn_rate;
                 break;
             case 47://Delay -
-                spawn_rate = (spawn_rate - value) < 1 ? 1 : spawn_rate - value;
+                spawn_rate = Math.max((spawn_rate - value), 1);
                 packetValue = (short) spawn_rate;
                 break;
             case 48://Fade +
-                fade = (fade + value) > 100 ? 100 : fade + value;
+                fade = Math.min((fade + value), 100);
                 packetValue = (short) fade;
                 break;
             case 49://Fade -
-                fade = (fade - value) < 0 ? 0 : fade - value;
+                fade = Math.max((fade - value), 0);
                 packetValue = (short) fade;
                 break;
             case 50://Toggle Collision
@@ -373,11 +373,11 @@ public class GUIParticleGenerator extends GuiScreen {
                 initGui();
                 break;
             case 52://RSZ +
-                gravity = (gravity + value_F) > 5F ? 5F : gravity + value_F;
+                gravity = Math.min((gravity + value_F), 5F);
                 packetValue = (short) (gravity * 1000F);
                 break;
             case 53://RSZ -
-                gravity = (gravity - value_F) < -5F ? -5F : gravity - value_F;
+                gravity = Math.max((gravity - value_F), -5F);
                 packetValue = (short) (gravity * 1000F);
                 break;
             case 54://Info Page
@@ -486,10 +486,10 @@ public class GUIParticleGenerator extends GuiScreen {
         int ln1 = 20;
         int ln2 = 30;
 
-        fontRendererObj.drawString("Red:", col1, posY + ln1 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString(String.valueOf(red), col1, posY + ln2 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("Green:", col1, posY + ln1 + 1 * 22, 0x000000, false);
-        fontRendererObj.drawString(String.valueOf(green), col1, posY + ln2 + 1 * 22, 0x000000, false);
+        fontRendererObj.drawString("Red:", col1, posY + ln1, 0x000000, false);
+        fontRendererObj.drawString(String.valueOf(red), col1, posY + ln2, 0x000000, false);
+        fontRendererObj.drawString("Green:", col1, posY + ln1 + 22, 0x000000, false);
+        fontRendererObj.drawString(String.valueOf(green), col1, posY + ln2 + 22, 0x000000, false);
         fontRendererObj.drawString("Blue:", col1, posY + ln1 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString(String.valueOf(blue), col1, posY + ln2 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString("Motion X:", col1, posY + ln1 + 3 * 22, 0x000000, false);
@@ -506,10 +506,10 @@ public class GUIParticleGenerator extends GuiScreen {
         for (int i = 0; i < 8; i++)
             fontRendererObj.drawStringWithShadow("(+)", posX + 98, posY + 25 + i * 22, 0xFFFFFF);
 
-        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("> " + random_red, col2, posY + ln2 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 1 * 22, 0x000000, false);
-        fontRendererObj.drawString("> " + random_green, col2, posY + ln2 + 1 * 22, 0x000000, false);
+        fontRendererObj.drawString("Random:0", col2, posY + ln1, 0x000000, false);
+        fontRendererObj.drawString("> " + random_red, col2, posY + ln2, 0x000000, false);
+        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 22, 0x000000, false);
+        fontRendererObj.drawString("> " + random_green, col2, posY + ln2 + 22, 0x000000, false);
         fontRendererObj.drawString("Random:0", col2, posY + ln1 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString("> " + random_blue, col2, posY + ln2 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString("Random:0", col2, posY + ln1 + 3 * 22, 0x000000, false);
@@ -534,8 +534,8 @@ public class GUIParticleGenerator extends GuiScreen {
         int DX4 = DX3 + 71;
         int y1 = 19;
 
-        buttonList.add(new GuiButton(0, posX + DX1, posY + y1 + 0 * 22, 20, 20, "+"));
-        buttonList.add(new GuiButton(1, posX + DX1, posY + y1 + 1 * 22, 20, 20, "+"));
+        buttonList.add(new GuiButton(0, posX + DX1, posY + y1, 20, 20, "+"));
+        buttonList.add(new GuiButton(1, posX + DX1, posY + y1 + 22, 20, 20, "+"));
         buttonList.add(new GuiButton(2, posX + DX1, posY + y1 + 2 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(3, posX + DX1, posY + y1 + 3 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(4, posX + DX1, posY + y1 + 4 * 22, 20, 20, "+"));
@@ -543,8 +543,8 @@ public class GUIParticleGenerator extends GuiScreen {
         buttonList.add(new GuiButton(24, posX + DX1, posY + y1 + 6 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(28, posX + DX1, posY + y1 + 7 * 22, 20, 20, "+"));
 
-        buttonList.add(new GuiButton(6, posX + DX2, posY + y1 + 0 * 22, 20, 20, "-"));
-        buttonList.add(new GuiButton(7, posX + DX2, posY + y1 + 1 * 22, 20, 20, "-"));
+        buttonList.add(new GuiButton(6, posX + DX2, posY + y1, 20, 20, "-"));
+        buttonList.add(new GuiButton(7, posX + DX2, posY + y1 + 22, 20, 20, "-"));
         buttonList.add(new GuiButton(8, posX + DX2, posY + y1 + 2 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(9, posX + DX2, posY + y1 + 3 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(10, posX + DX2, posY + y1 + 4 * 22, 20, 20, "-"));
@@ -552,8 +552,8 @@ public class GUIParticleGenerator extends GuiScreen {
         buttonList.add(new GuiButton(25, posX + DX2, posY + y1 + 6 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(29, posX + DX2, posY + y1 + 7 * 22, 20, 20, "-"));
 
-        buttonList.add(new GuiButton(12, posX + DX3, posY + y1 + 0 * 22, 20, 20, "+"));
-        buttonList.add(new GuiButton(13, posX + DX3, posY + y1 + 1 * 22, 20, 20, "+"));
+        buttonList.add(new GuiButton(12, posX + DX3, posY + y1, 20, 20, "+"));
+        buttonList.add(new GuiButton(13, posX + DX3, posY + y1 + 22, 20, 20, "+"));
         buttonList.add(new GuiButton(14, posX + DX3, posY + y1 + 2 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(15, posX + DX3, posY + y1 + 3 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(16, posX + DX3, posY + y1 + 4 * 22, 20, 20, "+"));
@@ -561,8 +561,8 @@ public class GUIParticleGenerator extends GuiScreen {
         buttonList.add(new GuiButton(26, posX + DX3, posY + y1 + 6 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(30, posX + DX3, posY + y1 + 7 * 22, 20, 20, "+"));
 
-        buttonList.add(new GuiButton(18, posX + DX4, posY + y1 + 0 * 22, 20, 20, "-"));
-        buttonList.add(new GuiButton(19, posX + DX4, posY + y1 + 1 * 22, 20, 20, "-"));
+        buttonList.add(new GuiButton(18, posX + DX4, posY + y1, 20, 20, "-"));
+        buttonList.add(new GuiButton(19, posX + DX4, posY + y1 + 22, 20, 20, "-"));
         buttonList.add(new GuiButton(20, posX + DX4, posY + y1 + 2 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(21, posX + DX4, posY + y1 + 3 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(22, posX + DX4, posY + y1 + 4 * 22, 20, 20, "-"));
@@ -590,20 +590,20 @@ public class GUIParticleGenerator extends GuiScreen {
         String random_spawn_Z = String.valueOf(Math.round(random_spawn_z * 10F) / 10F);
         String Gravity = String.valueOf(Math.round(gravity * 1000F) / 1000F);
 
-        fontRendererObj.drawString("Spawn X:", col1, posY + ln1 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString(spawn_X, col1, posY + ln2 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("Spawn Y:", col1, posY + ln1 + 1 * 22, 0x000000, false);
-        fontRendererObj.drawString(spawn_Y, col1, posY + ln2 + 1 * 22, 0x000000, false);
+        fontRendererObj.drawString("Spawn X:", col1, posY + ln1, 0x000000, false);
+        fontRendererObj.drawString(spawn_X, col1, posY + ln2, 0x000000, false);
+        fontRendererObj.drawString("Spawn Y:", col1, posY + ln1 + 22, 0x000000, false);
+        fontRendererObj.drawString(spawn_Y, col1, posY + ln2 + 22, 0x000000, false);
         fontRendererObj.drawString("Spawn Z:", col1, posY + ln1 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString(spawn_Z, col1, posY + ln2 + 2 * 22, 0x000000, false);
 
         for (int i = 0; i < 3; i++)
             fontRendererObj.drawStringWithShadow("(+)", posX + 98, posY + 25 + i * 22, 0xFFFFFF);
 
-        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("> " + random_spawn_X, col2, posY + ln2 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 1 * 22, 0x000000, false);
-        fontRendererObj.drawString("> " + random_spawn_Y, col2, posY + ln2 + 1 * 22, 0x000000, false);
+        fontRendererObj.drawString("Random:0", col2, posY + ln1, 0x000000, false);
+        fontRendererObj.drawString("> " + random_spawn_X, col2, posY + ln2, 0x000000, false);
+        fontRendererObj.drawString("Random:0", col2, posY + ln1 + 22, 0x000000, false);
+        fontRendererObj.drawString("> " + random_spawn_Y, col2, posY + ln2 + 22, 0x000000, false);
         fontRendererObj.drawString("Random:0", col2, posY + ln1 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString("> " + random_spawn_Z, col2, posY + ln2 + 2 * 22, 0x000000, false);
 
@@ -626,26 +626,26 @@ public class GUIParticleGenerator extends GuiScreen {
         int DX4 = DX3 + 71;
         int y1 = 19;
 
-        buttonList.add(new GuiButton(34, posX + DX1, posY + y1 + 0 * 22, 20, 20, "+"));
-        buttonList.add(new GuiButton(38, posX + DX1, posY + y1 + 1 * 22, 20, 20, "+"));
+        buttonList.add(new GuiButton(34, posX + DX1, posY + y1, 20, 20, "+"));
+        buttonList.add(new GuiButton(38, posX + DX1, posY + y1 + 22, 20, 20, "+"));
         buttonList.add(new GuiButton(42, posX + DX1, posY + y1 + 2 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(46, posX + DX1, posY + y1 + 3 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(48, posX + DX1, posY + y1 + 4 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(52, posX + DX1, posY + y1 + 5 * 22, 20, 20, "+"));
 
-        buttonList.add(new GuiButton(35, posX + DX2, posY + y1 + 0 * 22, 20, 20, "-"));
-        buttonList.add(new GuiButton(39, posX + DX2, posY + y1 + 1 * 22, 20, 20, "-"));
+        buttonList.add(new GuiButton(35, posX + DX2, posY + y1, 20, 20, "-"));
+        buttonList.add(new GuiButton(39, posX + DX2, posY + y1 + 22, 20, 20, "-"));
         buttonList.add(new GuiButton(43, posX + DX2, posY + y1 + 2 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(47, posX + DX2, posY + y1 + 3 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(49, posX + DX2, posY + y1 + 4 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(53, posX + DX2, posY + y1 + 5 * 22, 20, 20, "-"));
 
-        buttonList.add(new GuiButton(36, posX + DX3, posY + y1 + 0 * 22, 20, 20, "+"));
-        buttonList.add(new GuiButton(40, posX + DX3, posY + y1 + 1 * 22, 20, 20, "+"));
+        buttonList.add(new GuiButton(36, posX + DX3, posY + y1, 20, 20, "+"));
+        buttonList.add(new GuiButton(40, posX + DX3, posY + y1 + 22, 20, 20, "+"));
         buttonList.add(new GuiButton(44, posX + DX3, posY + y1 + 2 * 22, 20, 20, "+"));
 
-        buttonList.add(new GuiButton(37, posX + DX4, posY + y1 + 0 * 22, 20, 20, "-"));
-        buttonList.add(new GuiButton(41, posX + DX4, posY + y1 + 1 * 22, 20, 20, "-"));
+        buttonList.add(new GuiButton(37, posX + DX4, posY + y1, 20, 20, "-"));
+        buttonList.add(new GuiButton(41, posX + DX4, posY + y1 + 22, 20, 20, "-"));
         buttonList.add(new GuiButton(45, posX + DX4, posY + y1 + 2 * 22, 20, 20, "-"));
 
         buttonList.add(new GuiButton(50, posX + DX3 - 11, posY + y1 + 3 * 22, 102, 20, "Block Collision: " + (collide ? "on" : "off")));
@@ -669,10 +669,10 @@ public class GUIParticleGenerator extends GuiScreen {
         String rotation = String.valueOf(Math.round(beam_rotation * 100F) / 100F);
         String scale = String.valueOf(Math.round(beam_scale * 100F) / 100F);
 
-        fontRendererObj.drawString("Red:", col1, posY + ln1 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString(String.valueOf(beam_red), col1, posY + ln2 + 0 * 22, 0x000000, false);
-        fontRendererObj.drawString("Green:", col1, posY + ln1 + 1 * 22, 0x000000, false);
-        fontRendererObj.drawString(String.valueOf(beam_green), col1, posY + ln2 + 1 * 22, 0x000000, false);
+        fontRendererObj.drawString("Red:", col1, posY + ln1, 0x000000, false);
+        fontRendererObj.drawString(String.valueOf(beam_red), col1, posY + ln2, 0x000000, false);
+        fontRendererObj.drawString("Green:", col1, posY + ln1 + 22, 0x000000, false);
+        fontRendererObj.drawString(String.valueOf(beam_green), col1, posY + ln2 + 22, 0x000000, false);
         fontRendererObj.drawString("Blue:", col1, posY + ln1 + 2 * 22, 0x000000, false);
         fontRendererObj.drawString(String.valueOf(beam_blue), col1, posY + ln2 + 2 * 22, 0x000000, false);
 
@@ -699,8 +699,8 @@ public class GUIParticleGenerator extends GuiScreen {
         int DX4 = DX3 + 71;
         int y1 = 19;
 
-        buttonList.add(new GuiButton(100, posX + DX1, posY + y1 + 0 * 22, 20, 20, "+"));
-        buttonList.add(new GuiButton(101, posX + DX1, posY + y1 + 1 * 22, 20, 20, "+"));
+        buttonList.add(new GuiButton(100, posX + DX1, posY + y1, 20, 20, "+"));
+        buttonList.add(new GuiButton(101, posX + DX1, posY + y1 + 22, 20, 20, "+"));
         buttonList.add(new GuiButton(102, posX + DX1, posY + y1 + 2 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(103, posX + DX1, posY + y1 + 3 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(104, posX + DX1, posY + y1 + 4 * 22, 20, 20, "+"));
@@ -708,8 +708,8 @@ public class GUIParticleGenerator extends GuiScreen {
         buttonList.add(new GuiButton(106, posX + DX1, posY + y1 + 6 * 22, 20, 20, "+"));
         buttonList.add(new GuiButton(107, posX + DX1, posY + y1 + 7 * 22, 20, 20, "+"));
 
-        buttonList.add(new GuiButton(108, posX + DX2, posY + y1 + 0 * 22, 20, 20, "-"));
-        buttonList.add(new GuiButton(109, posX + DX2, posY + y1 + 1 * 22, 20, 20, "-"));
+        buttonList.add(new GuiButton(108, posX + DX2, posY + y1, 20, 20, "-"));
+        buttonList.add(new GuiButton(109, posX + DX2, posY + y1 + 22, 20, 20, "-"));
         buttonList.add(new GuiButton(110, posX + DX2, posY + y1 + 2 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(111, posX + DX2, posY + y1 + 3 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(112, posX + DX2, posY + y1 + 4 * 22, 20, 20, "-"));
@@ -717,8 +717,8 @@ public class GUIParticleGenerator extends GuiScreen {
         buttonList.add(new GuiButton(114, posX + DX2, posY + y1 + 6 * 22, 20, 20, "-"));
         buttonList.add(new GuiButton(115, posX + DX2, posY + y1 + 7 * 22, 20, 20, "-"));
 
-        buttonList.add(new GuiButton(116, posX + DX3 - 11, posY + y1 + 0 * 22, 102, 20, "Enabled: " + (beam_enabled ? "on" : "off")));
-        buttonList.add(new GuiButton(117, posX + DX3 - 11, posY + y1 + 1 * 22, 102, 20, "Render Core: " + (render_core ? "on" : "off")));
+        buttonList.add(new GuiButton(116, posX + DX3 - 11, posY + y1, 102, 20, "Enabled: " + (beam_enabled ? "on" : "off")));
+        buttonList.add(new GuiButton(117, posX + DX3 - 11, posY + y1 + 22, 102, 20, "Render Core: " + (render_core ? "on" : "off")));
 
 
         buttonList.add(new GuiButton(127, posX + DX3 - 11, posY + y1 + 7 * 22, 102, 20, "Take note of values"));
@@ -737,67 +737,67 @@ public class GUIParticleGenerator extends GuiScreen {
 
         switch (button.id) {
             case 100: //beam red +
-                beam_red = (beam_red + value) > 255 ? 255 : beam_red + value;
+                beam_red = Math.min((beam_red + value), 255);
                 packetValue = (short) beam_red;
                 break;
             case 101: //beam green +
-                beam_green = (beam_green + value) > 255 ? 255 : beam_green + value;
+                beam_green = Math.min((beam_green + value), 255);
                 packetValue = (short) beam_green;
                 break;
             case 102: //beam blue +
-                beam_blue = (beam_blue + value) > 255 ? 255 : beam_blue + value;
+                beam_blue = Math.min((beam_blue + value), 255);
                 packetValue = (short) beam_blue;
                 break;
             case 103: //beam pitch +
-                beam_pitch = (beam_pitch + value_F) > 180F ? 180F : beam_pitch + value_F;
+                beam_pitch = Math.min((beam_pitch + value_F), 180F);
                 packetValue = (short) (beam_pitch * 100F);
                 break;
             case 104: //beam yaw +
-                beam_yaw = (beam_yaw + value_F) > 180F ? 180F : beam_yaw + value_F;
+                beam_yaw = Math.min((beam_yaw + value_F), 180F);
                 packetValue = (short) (beam_yaw * 100F);
                 break;
             case 105: //beam length +
-                beam_length = (beam_length + value_F) > 320F ? 320F : beam_length + value_F;
+                beam_length = Math.min((beam_length + value_F), 320F);
                 packetValue = (short) (beam_length * 100F);
                 break;
             case 106: //beam rotation +
-                beam_rotation = (beam_rotation + value_F) > 1F ? 1F : beam_rotation + value_F;
+                beam_rotation = Math.min((beam_rotation + value_F), 1F);
                 packetValue = (short) (beam_rotation * 100F);
                 break;
             case 107: //beam scale +
-                beam_scale = (beam_scale + value_F) > 5F ? 5F : beam_scale + value_F;
+                beam_scale = Math.min((beam_scale + value_F), 5F);
                 packetValue = (short) (beam_scale * 100F);
                 break;
             case 108: //beam red -
-                beam_red = (beam_red - value) < 0 ? 0 : beam_red - value;
+                beam_red = Math.max((beam_red - value), 0);
                 packetValue = (short) beam_red;
                 break;
             case 109: //beam green -
-                beam_green = (beam_green - value) < 0 ? 0 : beam_green - value;
+                beam_green = Math.max((beam_green - value), 0);
                 packetValue = (short) beam_green;
                 break;
             case 110: //beam blue -
-                beam_blue = (beam_blue - value) < 0 ? 0 : beam_blue - value;
+                beam_blue = Math.max((beam_blue - value), 0);
                 packetValue = (short) beam_blue;
                 break;
             case 111: //beam pitch -
-                beam_pitch = (beam_pitch - value_F) < -180F ? -180F : beam_pitch - value_F;
+                beam_pitch = Math.max((beam_pitch - value_F), -180F);
                 packetValue = (short) (beam_pitch * 100F);
                 break;
             case 112: //beam yaw -
-                beam_yaw = (beam_yaw - value_F) < -180F ? -180F : beam_yaw - value_F;
+                beam_yaw = Math.max((beam_yaw - value_F), -180F);
                 packetValue = (short) (beam_yaw * 100F);
                 break;
             case 113: //beam length -
-                beam_length = (beam_length - value_F) < -0F ? -0F : beam_length - value_F;
+                beam_length = Math.max((beam_length - value_F), -0F);
                 packetValue = (short) (beam_length * 100F);
                 break;
             case 114: //beam rotation -
-                beam_rotation = (beam_rotation - value_F) < -1F ? -1F : beam_rotation - value_F;
+                beam_rotation = Math.max((beam_rotation - value_F), -1F);
                 packetValue = (short) (beam_rotation * 100F);
                 break;
             case 115: //beam scale -
-                beam_scale = (beam_scale - value_F) < -0F ? -0F : beam_scale - value_F;
+                beam_scale = Math.max((beam_scale - value_F), -0F);
                 packetValue = (short) (beam_scale * 100F);
                 break;
             case 116: //beam enabled

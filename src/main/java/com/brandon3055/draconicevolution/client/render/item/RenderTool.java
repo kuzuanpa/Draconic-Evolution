@@ -12,9 +12,9 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 29/10/2015.
  */
 public class RenderTool implements IItemRenderer {
-    private IModelCustom toolModel;
-    private String toolTexture;
-    private IRenderTweak tool;
+    private final IModelCustom toolModel;
+    private final String toolTexture;
+    private final IRenderTweak tool;
 
     //Draconic Sword
 

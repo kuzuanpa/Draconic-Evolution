@@ -15,8 +15,8 @@ import org.lwjgl.opengl.GL11;
  */
 public class ComponentIndexButton extends ComponentScrollingBase {
 
-    private ManualPage page;
-    private ItemStack stack;
+    private final ManualPage page;
+    private final ItemStack stack;
 
     public ComponentIndexButton(int x, int y, GUIScrollingBase gui, ManualPage page) {
         super(x, y, gui);

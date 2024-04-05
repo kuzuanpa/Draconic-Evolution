@@ -23,8 +23,8 @@ import java.util.Random;
 @SideOnly(Side.CLIENT)
 public class GUIEnergyInfuser extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileEnergyInfuser tile;
+    public final EntityPlayer player;
+    private final TileEnergyInfuser tile;
     private float rotation = 0;
 
     public GUIEnergyInfuser(InventoryPlayer invPlayer, TileEnergyInfuser tile) {

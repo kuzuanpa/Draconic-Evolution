@@ -7,7 +7,7 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 public class RenderEnergyInfuser implements IItemRenderer {
-    private TileEnergyInfuser tile;
+    private final TileEnergyInfuser tile;
 
     public RenderEnergyInfuser() {
         this.tile = new TileEnergyInfuser();

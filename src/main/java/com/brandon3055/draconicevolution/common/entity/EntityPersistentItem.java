@@ -70,9 +70,7 @@ public class EntityPersistentItem extends EntityItem {
     @Override
     public void onUpdate() {
         if (age + 10 >= lifespan) age = 0;
-        boolean flag2 = false;
-        if (this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 1), MathHelper.floor_double(this.posZ)) == Blocks.end_portal)
-            flag2 = true;
+        boolean flag2 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 1), MathHelper.floor_double(this.posZ)) == Blocks.end_portal;
         ItemStack stack = this.getDataWatcher().getWatchableObjectItemStack(10);
         if (stack != null && stack.getItem() != null) {
             if (stack.getItem().onEntityItemUpdate(this)) {

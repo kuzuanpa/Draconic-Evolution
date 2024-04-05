@@ -48,6 +48,7 @@ public class TileCKeyStone extends TileEntity {
 
         switch (getMeta()) {
             case 0: //Permanent Activation
+            case 3: //Button Activation (Consume Key)
                 isActivated = true;
                 player.destroyCurrentEquippedItem();
                 worldObj.playSoundEffect((double) xCoord + 0.5D, (double) yCoord + 0.5D, (double) zCoord + 0.5D, "random.click", 0.3F, 0.6F);
@@ -62,11 +63,6 @@ public class TileCKeyStone extends TileEntity {
                 else
                     worldObj.playSoundEffect((double) xCoord + 0.5D, (double) yCoord + 0.5D, (double) zCoord + 0.5D, "random.click", 0.3F, 0.5F);
                 isActivated = !isActivated;
-                break;
-            case 3: //Button Activation (Consume Key)
-                isActivated = true;
-                player.destroyCurrentEquippedItem();
-                worldObj.playSoundEffect((double) xCoord + 0.5D, (double) yCoord + 0.5D, (double) zCoord + 0.5D, "random.click", 0.3F, 0.6F);
                 break;
             case 4:
                 break;

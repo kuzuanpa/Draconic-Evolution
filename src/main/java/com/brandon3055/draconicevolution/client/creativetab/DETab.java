@@ -11,8 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class DETab extends CreativeTabs {
-    private String label;
-    private int tab;
+    private final String label;
+    private final int tab;
 
     static ItemStack iconStackStaff;
 

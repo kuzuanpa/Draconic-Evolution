@@ -32,7 +32,7 @@ import java.awt.*;
 public class RenderTileTeleporterStand extends TileEntitySpecialRenderer {
 
 
-    ModelTeleporterStand model = new ModelTeleporterStand();
+    final ModelTeleporterStand model = new ModelTeleporterStand();
 
     private final ResourceLocation texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/TeleporterStand.png");
 

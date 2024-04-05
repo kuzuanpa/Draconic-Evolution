@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Brandon on 27/06/2014.
  */
 public class TileDissEnchanter extends TileEntity implements ISidedInventory {
-    ItemStack[] items = new ItemStack[3];
+    final ItemStack[] items = new ItemStack[3];
     public boolean isValidRecipe = false;
     public int dissenchantCost = 0;
     public int timer = 0;
@@ -222,8 +222,7 @@ public class TileDissEnchanter extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-        if (i == 1 && itemstack.getItem().equals(Items.book)) return true;
-        return false;
+        return i == 1 && itemstack.getItem().equals(Items.book);
     }
 
     @Override

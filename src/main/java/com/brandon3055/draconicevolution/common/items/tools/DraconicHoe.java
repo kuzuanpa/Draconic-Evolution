@@ -41,9 +41,9 @@ import org.lwjgl.opengl.GL11;
 
 public class DraconicHoe extends ItemHoe implements IEnergyContainerItem, IRenderTweak, IUpgradableItem, IConfigurableItem, IHudDisplayItem {
 
-    protected int capacity = BalanceConfigHandler.draconicToolsBaseStorage;
-    protected int maxReceive = BalanceConfigHandler.draconicToolsMaxTransfer;
-    protected int maxExtract = BalanceConfigHandler.draconicToolsMaxTransfer;
+    protected final int capacity = BalanceConfigHandler.draconicToolsBaseStorage;
+    protected final int maxReceive = BalanceConfigHandler.draconicToolsMaxTransfer;
+    protected final int maxExtract = BalanceConfigHandler.draconicToolsMaxTransfer;
 
     public DraconicHoe() {
         super(ModItems.WYVERN);
@@ -167,13 +167,11 @@ public class DraconicHoe extends ItemHoe implements IEnergyContainerItem, IRende
             if (par7 != 0 && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z) && (block == Blocks.grass || block == Blocks.dirt)) {
                 Block block1 = Blocks.farmland;
 
-                if (world.isRemote) {
-                    return true;
-                } else {
+                if (!world.isRemote) {
                     world.setBlock(x, y, z, block1);
                     stack.damageItem(1, player);
-                    return true;
                 }
+                return true;
             } else {
                 return false;
             }

@@ -13,8 +13,8 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 16/9/2015.
  */
 public class ModelRenderOBJ extends ModelRenderer {
-    private IModelCustom model;
-    private ResourceLocation texture;
+    private final IModelCustom model;
+    private final ResourceLocation texture;
     private int displayList;
     private boolean compiled = false;
     public float scale = 0;

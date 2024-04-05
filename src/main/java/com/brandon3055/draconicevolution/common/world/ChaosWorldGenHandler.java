@@ -257,7 +257,7 @@ public class ChaosWorldGenHandler {
     public static class CrystalRemover implements IProcess {
         private boolean dead = false;
 
-        private Entity entity;
+        private final Entity entity;
         private int delay = 2;
 
         public CrystalRemover(Entity entity) {
@@ -270,7 +270,7 @@ public class ChaosWorldGenHandler {
             else {
                 boolean flag = true;
                 int y = (int) entity.posY - 1;
-                for (; flag; ) {
+                while (flag) {
                     flag = false;
                     for (int x = (int) Math.floor(entity.posX) - 4; x <= (int) Math.floor(entity.posX) + 4; x++) {
                         for (int z = (int) Math.floor(entity.posZ) - 4; z <= (int) Math.floor(entity.posZ) + 4; z++) {

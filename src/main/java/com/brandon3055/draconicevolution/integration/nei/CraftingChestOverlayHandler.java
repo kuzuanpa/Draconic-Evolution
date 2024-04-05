@@ -23,7 +23,7 @@ public class CraftingChestOverlayHandler implements IOverlayHandler {
             stack = InventoryUtils.copyStack(item, 1);
         }
 
-        public ItemStack stack;
+        public final ItemStack stack;
         public int invAmount;
         public int distributed;
         public int numSlots;
@@ -36,8 +36,8 @@ public class CraftingChestOverlayHandler implements IOverlayHandler {
             this.permutation = permutation;
         }
 
-        public DistributedIngred distrib;
-        public ItemStack permutation;
+        public final DistributedIngred distrib;
+        public final ItemStack permutation;
         public Slot[] slots;
     }
 
@@ -137,8 +137,8 @@ public class CraftingChestOverlayHandler implements IOverlayHandler {
         Slot[][] recipeSlots = mapIngredSlots(gui, ingredients);//setup the slot map
 
         HashMap<Slot, Integer> distribution = new HashMap<Slot, Integer>();
-        for (int i = 0; i < recipeSlots.length; i++)
-            for (Slot slot : recipeSlots[i])
+        for (Slot[] recipeSlot : recipeSlots)
+            for (Slot slot : recipeSlot)
                 if (!distribution.containsKey(slot)) distribution.put(slot, -1);
 
         HashSet<Slot> avaliableSlots = new HashSet<Slot>(distribution.keySet());
@@ -186,11 +186,10 @@ public class CraftingChestOverlayHandler implements IOverlayHandler {
             int biggestSize = 0;
             for (ItemStack pstack : posstack.items) {
                 if (pstack.stackSize == 0) continue;
-                for (int j = 0; j < ingredStacks.size(); j++) {
-                    DistributedIngred istack = ingredStacks.get(j);
+                for (DistributedIngred istack : ingredStacks) {
                     if (!InventoryUtils.canStack(pstack, istack.stack) || istack.invAmount - istack.distributed < pstack.stackSize)
                         continue;
-                    LogHelper.info(istack.invAmount - istack.invAmount + " " + istack.recipeAmount * istack.distributed + " " + pstack.stackSize);
+                    LogHelper.info(0 + " " + istack.recipeAmount * istack.distributed + " " + pstack.stackSize);
                     int relsize = (istack.invAmount - istack.invAmount / istack.recipeAmount * istack.distributed) / pstack.stackSize;
                     if (relsize > biggestSize) {
                         biggestSize = relsize;

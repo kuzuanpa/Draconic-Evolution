@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
  * Created by Brandon on 27/06/2014.
  */
 public class TileContainerTemplate extends TileEntity implements ISidedInventory {
-    ItemStack[] items = new ItemStack[9];
+    final ItemStack[] items = new ItemStack[9];
 
     //==============================================LOGIC=======================================================//
 

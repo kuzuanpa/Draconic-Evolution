@@ -14,12 +14,12 @@ import java.util.Random;
  */
 public class ChaosImplosionTrace implements IProcess {
 
-    private World worldObj;
-    private int xCoord;
+    private final World worldObj;
+    private final int xCoord;
     private int yCoord;
-    private int zCoord;
-    private float power;
-    private Random random;
+    private final int zCoord;
+    private final float power;
+    private final Random random;
 
     public ChaosImplosionTrace(World world, int x, int y, int z, float power, Random random) {
         this.worldObj = world;

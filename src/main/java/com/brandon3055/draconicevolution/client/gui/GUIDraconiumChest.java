@@ -32,8 +32,8 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class GUIDraconiumChest extends GuiContainer implements INEIGuiHandler {
-    public EntityPlayer player;
-    private TileDraconiumChest tile;
+    public final EntityPlayer player;
+    private final TileDraconiumChest tile;
     private static final ResourceLocation textureLeft = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/DraconicChestLeft.png");
     private static final ResourceLocation textureRight = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/DraconicChestRight.png");
     private int lastAutoFeed = -1;

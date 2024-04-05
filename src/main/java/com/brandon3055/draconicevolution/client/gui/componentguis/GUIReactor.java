@@ -20,8 +20,8 @@ import java.util.List;
  * Created by brandon3055 on 30/7/2015.
  */
 public class GUIReactor extends GUIBase {
-    private TileReactorCore reactor;
-    private ContainerReactor container;
+    private final TileReactorCore reactor;
+    private final ContainerReactor container;
     private static boolean showStats = false;
 
     public GUIReactor(EntityPlayer player, TileReactorCore reactor, ContainerReactor container) {
@@ -175,15 +175,9 @@ public class GUIReactor extends GUIBase {
     @Override
     public void updateScreen() {
 
-        if (reactor.reactorState == TileReactorCore.STATE_INVALID || reactor.reactorState == TileReactorCore.STATE_OFFLINE || reactor.reactorState == TileReactorCore.STATE_STOP)
-            collection.getComponent("DEACTIVATE").setEnabled(false);
-        else collection.getComponent("DEACTIVATE").setEnabled(true);
-        if ((reactor.reactorState == TileReactorCore.STATE_OFFLINE || (reactor.reactorState == TileReactorCore.STATE_STOP && !reactor.canStart())) && reactor.canCharge())
-            collection.getComponent("CHARGE").setEnabled(true);
-        else collection.getComponent("CHARGE").setEnabled(false);
-        if ((reactor.reactorState == TileReactorCore.STATE_START || reactor.reactorState == TileReactorCore.STATE_STOP) && reactor.canStart())
-            collection.getComponent("ACTIVATE").setEnabled(true);
-        else collection.getComponent("ACTIVATE").setEnabled(false);
+        collection.getComponent("DEACTIVATE").setEnabled(reactor.reactorState != TileReactorCore.STATE_INVALID && reactor.reactorState != TileReactorCore.STATE_OFFLINE && reactor.reactorState != TileReactorCore.STATE_STOP);
+        collection.getComponent("CHARGE").setEnabled((reactor.reactorState == TileReactorCore.STATE_OFFLINE || (reactor.reactorState == TileReactorCore.STATE_STOP && !reactor.canStart())) && reactor.canCharge());
+        collection.getComponent("ACTIVATE").setEnabled((reactor.reactorState == TileReactorCore.STATE_START || reactor.reactorState == TileReactorCore.STATE_STOP) && reactor.canStart());
         super.updateScreen();
     }
 

@@ -12,9 +12,9 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 public class RenderMobSoul implements IItemRenderer {
-    private Minecraft mc;
+    private final Minecraft mc;
     private Entity randomEntity = null;
-    private String[] randomEntitys = new String[]{"Pig", "Sheep", "Enderman", "Zombie", "Creeper", "Cow", "Chicken", "Ozelot", "Witch", "Wolf", "MushroomCow", "Squid", "EntityHorse", "Spider", "Skeleton", "Blaze", "Bat", "Villager", "Silverfish"};
+    private final String[] randomEntitys = new String[]{"Pig", "Sheep", "Enderman", "Zombie", "Creeper", "Cow", "Chicken", "Ozelot", "Witch", "Wolf", "MushroomCow", "Squid", "EntityHorse", "Spider", "Skeleton", "Blaze", "Bat", "Villager", "Silverfish"};
 
     public RenderMobSoul() {
         this.mc = Minecraft.getMinecraft();
@@ -52,7 +52,7 @@ public class RenderMobSoul implements IItemRenderer {
             GL11.glScalef(13F, 13F, 13F);
             GL11.glTranslated(1.2, 2.2, 0);
             GL11.glRotatef(180F, 1F, 0F, 0F);
-            GL11.glRotatef(mc.getSystemTime() / -10, 0F, 1F, 0F);
+            GL11.glRotatef(Minecraft.getSystemTime() / -10, 0F, 1F, 0F);
             GL11.glRotatef(-20F, 1F, 0F, 0F);
             RenderManager.instance.renderEntityWithPosYaw(mob, 0, 0, 0, 0F, 1F);
             GL11.glPopMatrix();
@@ -61,7 +61,7 @@ public class RenderMobSoul implements IItemRenderer {
             GL11.glScalef(0.8F, 0.8F, 0.8F);
             GL11.glTranslated(2, 0.5, 0);
             GL11.glRotatef(20F, 0F, 0F, 1F);
-            GL11.glRotatef(mc.getSystemTime() / -10, 0F, 1F, 0F);
+            GL11.glRotatef(Minecraft.getSystemTime() / -10, 0F, 1F, 0F);
             GL11.glRotatef(-20F, 1F, 0F, 0F);
             RenderManager.instance.renderEntityWithPosYaw(mob, 0, 0, 0, 0F, 1F);
             GL11.glPopMatrix();
@@ -70,14 +70,14 @@ public class RenderMobSoul implements IItemRenderer {
             GL11.glScalef(0.8F, 0.8F, 0.8F);
             GL11.glTranslated(1, 0.5, 0);
             GL11.glRotatef(20F, 0F, 0F, 1F);
-            GL11.glRotatef(mc.getSystemTime() / -10, 0F, 1F, 0F);
+            GL11.glRotatef(Minecraft.getSystemTime() / -10, 0F, 1F, 0F);
             GL11.glRotatef(-20F, 1F, 0F, 0F);
             RenderManager.instance.renderEntityWithPosYaw(mob, 0, 0, 0, 0F, 1F);
             GL11.glPopMatrix();
         } else {
             GL11.glPushMatrix();
             GL11.glScalef(1.5F, 1.5F, 1.5F);
-            GL11.glRotatef(mc.getSystemTime() / -10, 0F, 1F, 0F);
+            GL11.glRotatef(Minecraft.getSystemTime() / -10, 0F, 1F, 0F);
             GL11.glRotatef(-20F, 1F, 0F, 0F);
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

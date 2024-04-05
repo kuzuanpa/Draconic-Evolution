@@ -39,21 +39,21 @@ import java.util.Random;
  * Created by Brandon on 28/10/2014.
  */
 public class ClientEventHandler {
-    public static Map<EntityPlayer, XZPair<Float, Integer>> playerShieldStatus = new HashMap<EntityPlayer, XZPair<Float, Integer>>();
+    public static final Map<EntityPlayer, XZPair<Float, Integer>> playerShieldStatus = new HashMap<EntityPlayer, XZPair<Float, Integer>>();
 
     public static int elapsedTicks;
-    private static float previousFOB = 0f;
+    private static final float previousFOB = 0f;
     public static float previousSensitivity = 0;
     public static boolean bowZoom = false;
     public static boolean lastTickBowZoom = false;
-    public static int tickSet = 0;
+    public static final int tickSet = 0;
     private static int remountTicksRemaining = 0;
     private static int remountEntityID = 0;
     public static float energyCrystalAlphaValue = 0f;
     public static float energyCrystalAlphaTarget = 0f;
     public static boolean playerHoldingWrench = false;
     public static Minecraft mc;
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
     private static IModelCustom shieldSphere;
 
     public ClientEventHandler() {

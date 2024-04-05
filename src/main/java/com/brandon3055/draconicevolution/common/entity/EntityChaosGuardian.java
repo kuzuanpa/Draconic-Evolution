@@ -291,8 +291,8 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                 }
 
                 this.randomYawVelocity *= 0.8F;
-                float f6 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ) * 1.0F + 1.0F;
-                double d9 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ) * 1.0D + 1.0D;
+                float f6 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ) + 1.0F;
+                double d9 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ) + 1.0D;
 
                 if (d9 > 40.0D) {
                     d9 = 40.0D;
@@ -353,7 +353,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
             f12 = MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F - this.randomYawVelocity * 0.01F);
             float f13 = MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F - this.randomYawVelocity * 0.01F);
             this.dragonPartHead.onUpdate();
-            this.dragonPartHead.setLocationAndAngles(this.posX + (double) (f12 * 5.5F * f2), this.posY + (adouble[1] - adouble1[1]) * 1.0D + (double) (f10 * 5.5F), this.posZ - (double) (f13 * 5.5F * f2), 0.0F, 0.0F);
+            this.dragonPartHead.setLocationAndAngles(this.posX + (double) (f12 * 5.5F * f2), this.posY + (adouble[1] - adouble1[1]) + (double) (f10 * 5.5F), this.posZ - (double) (f13 * 5.5F * f2), 0.0F, 0.0F);
 
             for (int j = 0; j < 3; ++j) {
                 EntityDragonPart entitydragonpart = null;
@@ -371,13 +371,13 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                 }
 
                 double[] adouble2 = this.getMovementOffsets(12 + j * 2, 1.0F);
-                float f14 = this.rotationYaw * (float) Math.PI / 180.0F + this.simplifyAngle(adouble2[0] - adouble1[0]) * (float) Math.PI / 180.0F * 1.0F;
+                float f14 = this.rotationYaw * (float) Math.PI / 180.0F + this.simplifyAngle(adouble2[0] - adouble1[0]) * (float) Math.PI / 180.0F;
                 float f15 = MathHelper.sin(f14);
                 float f16 = MathHelper.cos(f14);
                 float f17 = 1.5F;
                 float f18 = (float) (j + 1) * 2.0F;
                 entitydragonpart.onUpdate();
-                entitydragonpart.setLocationAndAngles(this.posX - (double) ((f11 * f17 + f15 * f18) * f2), this.posY + (adouble2[1] - adouble1[1]) * 1.0D - (double) ((f18 + f17) * f10) + 1.5D, this.posZ + (double) ((f4 * f17 + f16 * f18) * f2), 0.0F, 0.0F);
+                entitydragonpart.setLocationAndAngles(this.posX - (double) ((f11 * f17 + f15 * f18) * f2), this.posY + (adouble2[1] - adouble1[1]) - (double) ((f18 + f17) * f10) + 1.5D, this.posZ + (double) ((f4 * f17 + f16 * f18) * f2), 0.0F, 0.0F);
             }
 
             if (!this.worldObj.isRemote) {
@@ -555,12 +555,8 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                     }
                     break;
                     case ATTACK_FIREBALL_CHASER:
-                        attackTimer = 10 + rand.nextInt(80);
-                        break;
-                    case ATTACK_ENERGY_CHASER:
-                        attackTimer = 10 + rand.nextInt(80);
-                        break;
                     case ATTACK_CHAOS_CHASER:
+                    case ATTACK_ENERGY_CHASER:
                         attackTimer = 10 + rand.nextInt(80);
                         break;
                     case ATTACK_TELEPORT:
@@ -664,18 +660,11 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
     private void updateTarget() {
         switch (behaviour) {
             case ROAMING:
-
-
-                break;
-            case GO_HOME:
-
-
-                break;
-            case GUARDING:
-
-
-                break;
+            case LOW_HEALTH_STRATEGY:
+            case CIRCLE_PLAYER:
             case CHARGING:
+            case GUARDING:
+            case GO_HOME:
 
 
                 break;
@@ -685,14 +674,6 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                     targetY = homeY + 30;
                     targetZ = homeZ;
                 }
-
-                break;
-            case CIRCLE_PLAYER:
-
-
-                break;
-            case LOW_HEALTH_STRATEGY:
-
 
                 break;
             case DEAD:
@@ -744,6 +725,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
 
                 break;
             case LOW_HEALTH_STRATEGY:
+            case DEAD:
 
 
                 break;
@@ -756,10 +738,6 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                         target = potentialTarget;
                     else targets.remove(potentialTarget);
                 }
-
-                break;
-            case DEAD:
-
 
                 break;
         }
@@ -777,7 +755,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
 
         switch (behaviour) {
             case ROAMING:
-                break;
+            case DEAD:
             case GO_HOME:
                 break;
             case GUARDING:
@@ -813,8 +791,6 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
                 if (damageSource.getEntity() instanceof EntityPlayer && damageSource.getEntity() != target && worldObj.rayTraceBlocks(Vec3.createVectorHelper(posX, posY, posZ), Vec3.createVectorHelper(damageSource.getEntity().posX, damageSource.getEntity().posY, damageSource.getEntity().posZ)) == null) {
                     target = damageSource.getEntity();
                 }
-                break;
-            case DEAD:
                 break;
         }
 
@@ -869,7 +845,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
          * will die...
          */
         DEAD(0.5F);
-        public float dragonSpeed;
+        public final float dragonSpeed;
 
         private EnumBehaviour(float dragonSpeed) {
             this.dragonSpeed = dragonSpeed;
@@ -878,7 +854,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
     }
 
     private static class WeightedAttack extends WeightedRandom.Item {
-        public int attack;
+        public final int attack;
 
         public WeightedAttack(int weight, int attack) {
             super(weight);
@@ -887,7 +863,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
     }
 
     private static class WeightedBehaviour extends WeightedRandom.Item {
-        public EnumBehaviour randomBehaviour;
+        public final EnumBehaviour randomBehaviour;
 
         public WeightedBehaviour(int weight, EnumBehaviour randomBehaviour) {
             super(weight);
@@ -1021,8 +997,8 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
     private void attackEntitiesInList(List par1List) {
         if (behaviour == EnumBehaviour.CHARGING) {
             boolean hasAttacked = false;
-            for (int i = 0; i < par1List.size(); ++i) {
-                Entity entity = (Entity) par1List.get(i);
+            for (Object o : par1List) {
+                Entity entity = (Entity) o;
 
                 if (entity instanceof EntityPlayer) {
                     ((EntityLivingBase) entity).setLastAttacker(this);
@@ -1188,7 +1164,7 @@ public class EntityChaosGuardian extends EntityDragon {//summon DraconicEvolutio
             }
         }
 
-        this.worldObj.setBlock(par1, b0 + 0, par2, Blocks.bedrock);
+        this.worldObj.setBlock(par1, b0, par2, Blocks.bedrock);
         this.worldObj.setBlock(par1, b0 + 1, par2, Blocks.bedrock);
         this.worldObj.setBlock(par1, b0 + 2, par2, Blocks.bedrock);
         this.worldObj.setBlock(par1, b0 + 3, par2, Blocks.bedrock);

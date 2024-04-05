@@ -12,9 +12,9 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 1/10/2015.
  */
 public class RenderChaosFragment implements IItemRenderer {
-    private static IModelCustom model = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/chaosCrystalShard.obj"));
+    private static final IModelCustom model = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/chaosCrystalShard.obj"));
 
-    private static ModelStaffOfTheGreatOne staff = new ModelStaffOfTheGreatOne();
+    private static final ModelStaffOfTheGreatOne staff = new ModelStaffOfTheGreatOne();
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {

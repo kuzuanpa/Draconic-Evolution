@@ -15,9 +15,9 @@ public class GUIToolInventory extends GUIBase {
 
     private static final ResourceLocation inventoryTexture = new ResourceLocation(References.RESOURCESPREFIX + "textures/gui/ToolConfig.png");
 
-    private ContainerAdvTool container;
-    private String inventoryName;
-    private EntityPlayer player;
+    private final ContainerAdvTool container;
+    private final String inventoryName;
+    private final EntityPlayer player;
     private GUIToolConfig guiToolConfig;
 
     public GUIToolInventory(EntityPlayer player, ContainerAdvTool container) {

@@ -109,8 +109,6 @@ public class TileReactorCore extends TileObjectSync {
                 startingTick();
                 break;
             case STATE_ONLINE:
-                runTick();
-                break;
             case STATE_STOP:
                 runTick();
                 break;
@@ -133,7 +131,7 @@ public class TileReactorCore extends TileObjectSync {
             double offsetX = player.posX - xCoord + 0.5;
             double offsetY = player.posY - yCoord + 0.5;
             double offsetZ = player.posZ - zCoord + 0.5;
-            double m = 1D * dMod;
+            double m = dMod;
             player.addVelocity(offsetX * m, offsetY * m, offsetZ * m);
         }
     }

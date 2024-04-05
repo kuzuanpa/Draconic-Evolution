@@ -130,12 +130,12 @@ public interface IUpgradableItem {
         MOVE_SPEED(11, 1, "MoveSpeed"),
         JUMP_BOOST(12, 1, "JumpBoost");
 
-        public int index;
+        public final int index;
         /**
          * How many core points dose it take to add 1 upgrade point
          */
-        public int pointConversion;
-        public String name;
+        public final int pointConversion;
+        public final String name;
         private final String COMPOUND_NAME = "Upgrades";
 
         private EnumUpgrade(int index, int pointConversion, String name) {

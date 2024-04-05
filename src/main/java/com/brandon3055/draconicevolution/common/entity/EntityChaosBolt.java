@@ -13,11 +13,11 @@ import net.minecraft.world.World;
 public class EntityChaosBolt extends Entity {
 
     public double shardX;
-    public double shardY;
+    public final double shardY;
     public double shardZ;
     public boolean burst;
     public int ticks = 0;
-    private static DamageSource chaosBurst = new DamageSource("chaosBurst").setDamageBypassesArmor().setDamageIsAbsolute();
+    private static final DamageSource chaosBurst = new DamageSource("chaosBurst").setDamageBypassesArmor().setDamageIsAbsolute();
 
     public EntityChaosBolt(World world) {
         this(world, 0, 0, 0, 0, 0, 0);

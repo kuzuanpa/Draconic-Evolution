@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
  * Created by Brandon on 29/10/2014.
  */
 public class InventoryCraftingChestResult extends InventoryCraftResult {
-    TileDraconiumChest tile;
+    final TileDraconiumChest tile;
 
     public InventoryCraftingChestResult(TileDraconiumChest tile) {
         this.tile = tile;

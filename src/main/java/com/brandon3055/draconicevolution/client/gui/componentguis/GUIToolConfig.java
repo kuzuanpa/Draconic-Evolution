@@ -33,11 +33,11 @@ import java.util.List;
  */
 public class GUIToolConfig extends GUIBase {
 
-    public EntityPlayer player;
+    public final EntityPlayer player;
     private static final ResourceLocation inventoryTexture = new ResourceLocation(References.RESOURCESPREFIX + "textures/gui/ToolConfig.png");
     private int screenLevel = 0;
     private ItemStack editingItem;
-    private ContainerAdvTool container;
+    private final ContainerAdvTool container;
     private int slot;
 
     public GUIToolConfig(EntityPlayer player, ContainerAdvTool container) {

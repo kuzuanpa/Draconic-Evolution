@@ -19,7 +19,7 @@ public class RenderTileEnergyStorageCore extends TileEntitySpecialRenderer {
 
     private static final ResourceLocation iner_model_texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/power_sphere_layer_1.png");
     private static final ResourceLocation outer_model_texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/power_sphere_layer_2.png");
-    private IModelCustom iner_model;
+    private final IModelCustom iner_model;
 
     public RenderTileEnergyStorageCore() {
         iner_model = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/power_sphere_layer_1.obj"));

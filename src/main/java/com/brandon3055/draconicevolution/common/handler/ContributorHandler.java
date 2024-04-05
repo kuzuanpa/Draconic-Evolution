@@ -29,10 +29,10 @@ import java.util.UUID;
  */
 public class ContributorHandler {
 
-    public static Map<String, Contributor> contributors = new LinkedHashMap<String, Contributor>();
+    public static final Map<String, Contributor> contributors = new LinkedHashMap<String, Contributor>();
     public static boolean successfulLoad = false;
     private static DLThread thread;
-    private static ModelContributorWings wings = new ModelContributorWings();
+    private static final ModelContributorWings wings = new ModelContributorWings();
 
     public static void init() {
         thread = new DLThread();
@@ -257,7 +257,7 @@ public class ContributorHandler {
          */
         public boolean contributorWingsEnabled = true;
         public boolean patreonBadgeEnabled = true;
-        private boolean validated = false;
+        private final boolean validated = false;
         private boolean isValid;
 
         public Contributor() {

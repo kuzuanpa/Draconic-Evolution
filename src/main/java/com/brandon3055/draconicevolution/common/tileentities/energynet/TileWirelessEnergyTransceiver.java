@@ -27,7 +27,7 @@ public class TileWirelessEnergyTransceiver extends TileRemoteEnergyBase {
     @SideOnly(Side.CLIENT)
     private ParticleEnergyField ring;
 
-    public List<LinkedReceiver> receiverList = new ArrayList<LinkedReceiver>();
+    public final List<LinkedReceiver> receiverList = new ArrayList<LinkedReceiver>();
 
     public TileWirelessEnergyTransceiver() {
     }

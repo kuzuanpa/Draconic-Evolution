@@ -22,7 +22,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 public class RenderBow implements IItemRenderer {
-    private Minecraft mc;
+    private final Minecraft mc;
 
     public RenderBow() {
         //this.renderManager = RenderManager.instance;

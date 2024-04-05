@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
 
 public class ParticleEnergy extends EntityFX {
-    public double originalX;
-    public double originalY;
-    public double originalZ;
-    public double targetX;
-    public double targetY;
-    public double targetZ;
-    public int particle;
+    public final double originalX;
+    public final double originalY;
+    public final double originalZ;
+    public final double targetX;
+    public final double targetY;
+    public final double targetZ;
+    public final int particle;
     public boolean expand = true;
 
     public ParticleEnergy(World world, double x, double y, double z, double tX, double tY, double tZ, int particle, boolean expand) {
@@ -86,7 +86,7 @@ public class ParticleEnergy extends EntityFX {
             particleGreen = 1F;
             particleBlue = 1F;
             particleScale = 2;
-            particleAlpha = (1F - ((float) particleAge / (float) particleMaxAge)) * 1F;
+            particleAlpha = (1F - ((float) particleAge / (float) particleMaxAge));
         }
 
     }

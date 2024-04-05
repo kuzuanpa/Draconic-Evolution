@@ -21,8 +21,8 @@ import java.util.ArrayList;
 @SideOnly(Side.CLIENT)
 public class GUIGenerator extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileGenerator tile;
+    public final EntityPlayer player;
+    private final TileGenerator tile;
     private int guiUpdateTick;
 
     public GUIGenerator(InventoryPlayer invPlayer, TileGenerator tile) {
@@ -51,10 +51,10 @@ public class GUIGenerator extends GuiContainer {
         float power = (float) tile.getEnergyStored(ForgeDirection.DOWN) / (float) tile.getMaxEnergyStored(ForgeDirection.DOWN) * -1 + 1;
         float fuel = tile.burnTimeRemaining / ((float) tile.burnTime) * -1 + 1;
 
-        drawTexturedModalRect(guiLeft + 83, guiTop + 11 + (int) (power * 40), xSize, 0 + (int) (power * 40), 12, 40 - (int) (power * 40));//Power bar
+        drawTexturedModalRect(guiLeft + 83, guiTop + 11 + (int) (power * 40), xSize, (int) (power * 40), 12, 40 - (int) (power * 40));//Power bar
         drawTexturedModalRect(guiLeft + 100, guiTop + 37 + (int) (fuel * 13), xSize, 40 + (int) (fuel * 13), 18, 18 - (int) (fuel * 13));//Power bar
 
-        fontRendererObj.drawStringWithShadow("Generator", guiLeft + 64, guiTop + 0, 0x00FFFF);
+        fontRendererObj.drawStringWithShadow("Generator", guiLeft + 64, guiTop, 0x00FFFF);
 
         int x = X - guiLeft;
         int y = Y - guiTop;

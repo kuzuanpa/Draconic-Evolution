@@ -19,7 +19,7 @@ public class TileWeatherController extends TileEntity implements IInventory {
     public int mode = 0;
     private final static boolean debug = DraconicEvolution.debug;
 
-    private ItemStack[] items;
+    private final ItemStack[] items;
     public int charges;
 
     public TileWeatherController() {
@@ -90,10 +90,10 @@ public class TileWeatherController extends TileEntity implements IInventory {
             if (tick > 110 && worldObj.isRemote) {
 
                 worldObj.playSound(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.fizz", 10F, worldObj.rand.nextFloat() * 0.1F + 0.9F, false);
-                worldObj.spawnParticle("explode", xCoord + 0.5, yCoord + 0, zCoord + 0, 0D, 0D, 0D);
-                worldObj.spawnParticle("explode", xCoord + 0.5, yCoord + 0, zCoord + 1, 0D, 0D, 0D);
-                worldObj.spawnParticle("explode", xCoord + 0, yCoord + 0, zCoord + 0.5, 0D, 0D, 0D);
-                worldObj.spawnParticle("explode", xCoord + 1, yCoord + 0, zCoord + 0.5, 0D, 0D, 0D);
+                worldObj.spawnParticle("explode", xCoord + 0.5, yCoord, zCoord, 0D, 0D, 0D);
+                worldObj.spawnParticle("explode", xCoord + 0.5, yCoord, zCoord + 1, 0D, 0D, 0D);
+                worldObj.spawnParticle("explode", xCoord, yCoord, zCoord + 0.5, 0D, 0D, 0D);
+                worldObj.spawnParticle("explode", xCoord + 1, yCoord, zCoord + 0.5, 0D, 0D, 0D);
 
             }
             if (tick > 130) {

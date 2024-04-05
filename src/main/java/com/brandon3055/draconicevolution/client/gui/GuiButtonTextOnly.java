@@ -11,8 +11,8 @@ import org.lwjgl.opengl.GL11;
  * Created by Brandon on 17/09/2014.
  */
 public class GuiButtonTextOnly extends GuiButton {
-    public String LINKED_PAGE;
-    public int textColour;
+    public final String LINKED_PAGE;
+    public final int textColour;
 
     public GuiButtonTextOnly(int id, int xPos, int yPos, int width, int hight, String displayString, String linkedPage, int colour) {
         super(id, xPos, yPos, width, hight, displayString);

@@ -20,8 +20,8 @@ import java.util.HashMap;
 public class Achievements {
 
     private static AchievementPage achievementsPage;
-    private static HashMap<String, Achievement> achievementsList = new HashMap<String, Achievement>();
-    private static HashMap<String, AchievementCondition> achievementItems = new HashMap<String, AchievementCondition>();
+    private static final HashMap<String, Achievement> achievementsList = new HashMap<String, Achievement>();
+    private static final HashMap<String, AchievementCondition> achievementItems = new HashMap<String, AchievementCondition>();
 
     public static void addAchievement(String name, Achievement achievement, ItemStack stack, String triggerCondition) {
         if (stack == null || stack.getItem() == null) return;
@@ -75,7 +75,7 @@ public class Achievements {
         addAchievement("draconicevolution.dislocator2", new Achievement("draconicevolution.dislocator2", "draconicevolution.dislocator2", -2 + x, -5, ModItems.teleporterMKII, getAchievement("draconicevolution.core2")), "craft");
         addAchievement("draconicevolution.flux", new Achievement("draconicevolution.flux", "draconicevolution.flux", -2 + x, 5, ModItems.wyvernFluxCapacitor, getAchievement("draconicevolution.core2")), "craft");
 
-        addAchievement("draconicevolution.heart", new Achievement("draconicevolution.heart", "draconicevolution.heart", 0 + x, 0, ModItems.dragonHeart, getAchievement("draconicevolution.core2")).setSpecial(), "pickup");
+        addAchievement("draconicevolution.heart", new Achievement("draconicevolution.heart", "draconicevolution.heart", x, 0, ModItems.dragonHeart, getAchievement("draconicevolution.core2")).setSpecial(), "pickup");
         addAchievement("draconicevolution.awakenedblock", new Achievement("draconicevolution.awakenedblock", "draconicevolution.awakenedblock", 2 + x, 0, ModBlocks.draconicBlock, getAchievement("draconicevolution.heart")), "pickup");
         addAchievement("draconicevolution.core3", new Achievement("draconicevolution.core3", "draconicevolution.core3", 4 + x, 0, ModItems.awakenedCore, getAchievement("draconicevolution.awakenedblock")).setSpecial(), "craft");
 
@@ -96,7 +96,7 @@ public class Achievements {
 
         ItemStack mobSoul = new ItemStack(ModItems.mobSoul);
         ItemNBTHelper.setString(mobSoul, "Name", "Any");
-        addAchievement("draconicevolution.soul", new Achievement("draconicevolution.soul", "draconicevolution.soul", 0 + x, -2, mobSoul, null).initIndependentStat(), "null");
+        addAchievement("draconicevolution.soul", new Achievement("draconicevolution.soul", "draconicevolution.soul", x, -2, mobSoul, null).initIndependentStat(), "null");
         //if (ConfigHandler.disableSunDial == 0)addAchievement("draconicevolution.sundial", new Achievement("draconicevolution.sundial", "draconicevolution.sundial", 4+x, -4, ModBlocks.sunDial, getAchievement("draconicevolution.core3")).setSpecial(), "craft");
         addAchievement("draconicevolution.manual", new Achievement("draconicevolution.manual", "draconicevolution.manual", -8 + x, -1, ModItems.infoTablet, getAchievement("draconicevolution.dust")), "craft");
 

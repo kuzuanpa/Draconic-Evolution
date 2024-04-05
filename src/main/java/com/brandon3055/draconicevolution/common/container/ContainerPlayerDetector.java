@@ -13,7 +13,7 @@ import java.util.Iterator;
 
 public class ContainerPlayerDetector extends Container {
 
-    private TilePlayerDetectorAdvanced tileDetector;
+    private final TilePlayerDetectorAdvanced tileDetector;
     private GUIPlayerDetector gui = null;
 
     public ContainerPlayerDetector(InventoryPlayer invPlayer, TilePlayerDetectorAdvanced tileDetector) {
@@ -57,9 +57,7 @@ public class ContainerPlayerDetector extends Container {
             return;
         }
 
-        Iterator<Slot> i1 = inventorySlots.iterator();
-        while (i1.hasNext()) {
-            Slot sl = i1.next();
+        for (Slot sl : (Iterable<Slot>) inventorySlots) {
             if (sl instanceof SlotOpaqueBlock) {
                 if (gui.showInvSlots) {
                     sl.xDisplayPosition = 143;
@@ -75,10 +73,10 @@ public class ContainerPlayerDetector extends Container {
                         sl.yDisplayPosition = 174;
                     } else if (sl.slotNumber < 18) {
                         sl.xDisplayPosition = 8 + 18 * (sl.slotNumber - 9);
-                        sl.yDisplayPosition = 116 + 0 * 18;
+                        sl.yDisplayPosition = 116;
                     } else if (sl.slotNumber < 27) {
                         sl.xDisplayPosition = 8 + 18 * (sl.slotNumber - 18);
-                        sl.yDisplayPosition = 116 + 1 * 18;
+                        sl.yDisplayPosition = 116 + 18;
                     } else if (sl.slotNumber < 36) {
                         sl.xDisplayPosition = 8 + 18 * (sl.slotNumber - 27);
                         sl.yDisplayPosition = 116 + 2 * 18;

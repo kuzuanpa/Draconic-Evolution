@@ -13,8 +13,8 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderTileReactorStabilizer extends TileEntitySpecialRenderer {
 
-    public static ModelReactorStabilizerRing modelStabilizerRing = new ModelReactorStabilizerRing();
-    public static ModelReactorStabilizerCore modelStabilizerCore = new ModelReactorStabilizerCore();
+    public static final ModelReactorStabilizerRing modelStabilizerRing = new ModelReactorStabilizerRing();
+    public static final ModelReactorStabilizerCore modelStabilizerCore = new ModelReactorStabilizerCore();
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float partialTick) {

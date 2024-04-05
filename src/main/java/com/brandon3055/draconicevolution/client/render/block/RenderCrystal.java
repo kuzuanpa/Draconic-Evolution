@@ -14,12 +14,12 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderCrystal implements IItemRenderer {
 
-    private TileEnergyRelay relay1;
-    private TileEnergyRelay relay2;
-    private TileEnergyTransceiver transceiver1;
-    private TileEnergyTransceiver transceiver2;
-    private TileWirelessEnergyTransceiver wirelessTransceiver1;
-    private TileWirelessEnergyTransceiver wirelessTransceiver2;
+    private final TileEnergyRelay relay1;
+    private final TileEnergyRelay relay2;
+    private final TileEnergyTransceiver transceiver1;
+    private final TileEnergyTransceiver transceiver2;
+    private final TileWirelessEnergyTransceiver wirelessTransceiver1;
+    private final TileWirelessEnergyTransceiver wirelessTransceiver2;
 
     public RenderCrystal() {
         relay1 = new TileEnergyRelay(0);

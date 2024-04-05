@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderTileReactorEnergyInjector extends TileEntitySpecialRenderer {
 
-    public static ModelReactorEnergyInjector modelReactorEnergyInjector = new ModelReactorEnergyInjector();
+    public static final ModelReactorEnergyInjector modelReactorEnergyInjector = new ModelReactorEnergyInjector();
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float partialTick) {

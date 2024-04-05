@@ -61,8 +61,8 @@ public class DraconicArmor extends ItemArmor implements ISpecialArmor, IConfigur
     @SideOnly(Side.CLIENT)
     private IIcon bootsIcon;
 
-    private int maxEnergy = BalanceConfigHandler.draconicArmorBaseStorage;
-    private int maxTransfer = BalanceConfigHandler.draconicArmorMaxTransfer;
+    private final int maxEnergy = BalanceConfigHandler.draconicArmorBaseStorage;
+    private final int maxTransfer = BalanceConfigHandler.draconicArmorMaxTransfer;
 
     public DraconicArmor(ArmorMaterial material, int armorType, String name) {
         super(material, 0, armorType);
@@ -151,13 +151,12 @@ public class DraconicArmor extends ItemArmor implements ISpecialArmor, IConfigur
     protected float getProtectionShare() {
         switch (armorType) {
             case 0:
+            case 3:
                 return 0.15F;
             case 1:
                 return 0.40F;
             case 2:
                 return 0.30F;
-            case 3:
-                return 0.15F;
         }
         return 0;
     }

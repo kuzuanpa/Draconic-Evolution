@@ -174,7 +174,7 @@ public class ComponentContributorsPage extends ComponentScrollingBase implements
         if (confirmed) ClientUtills.openLink(lastClickURL);
     }
 
-    private static ModelBiped modelBiped = new ModelBiped(0.0265F);
+    private static final ModelBiped modelBiped = new ModelBiped(0.0265F);
 
     private static void renderPlayer(String username) {
         ResourceHandler.bindTexture(getSkin(username));
@@ -182,7 +182,7 @@ public class ComponentContributorsPage extends ComponentScrollingBase implements
         modelBiped.bipedHeadwear.render(0.0265F);
     }
 
-    private static Map<String, ResourceLocation> skinCache = new HashMap<String, ResourceLocation>();
+    private static final Map<String, ResourceLocation> skinCache = new HashMap<String, ResourceLocation>();
     private static boolean skinCashInitialized = false;
 
     private static ResourceLocation getSkin(String username) {

@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class DragonChunkLoader implements LoadingCallback {
     public static DragonChunkLoader instance;
-    public static Map<EntityChaosGuardian, Ticket> ticketList = new HashMap<EntityChaosGuardian, Ticket>();
+    public static final Map<EntityChaosGuardian, Ticket> ticketList = new HashMap<EntityChaosGuardian, Ticket>();
     public static boolean hasReportedIssue = false;
 
     public static void init() {

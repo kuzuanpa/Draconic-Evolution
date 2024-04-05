@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 30/8/2015.
  */
 public class RenderChaosCrystal extends Render {
-    private ModelBase model;
+    private final ModelBase model;
 
     public RenderChaosCrystal() {
         this.shadowSize = 0.5F;
@@ -98,7 +98,7 @@ public class RenderChaosCrystal extends Render {
 
 
     protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-        return this.getEntityTexture((EntityChaosCrystal) p_110775_1_);
+        return ResourceHandler.getResource("textures/entity/chaosCrystal.png");
     }
 
     public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_) {

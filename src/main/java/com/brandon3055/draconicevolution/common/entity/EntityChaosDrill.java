@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class EntityChaosDrill extends Entity {
 
-    public int MAX_AGE = 300;
+    public final int MAX_AGE = 300;
     private int ENTITY_AGE = 0;
     private EntityPlayer PLAYER;
 

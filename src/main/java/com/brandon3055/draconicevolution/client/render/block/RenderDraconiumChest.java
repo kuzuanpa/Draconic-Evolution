@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderDraconiumChest implements IItemRenderer {
 
-    ModelChest chest;
+    final ModelChest chest;
 
     public RenderDraconiumChest() {
         chest = new ModelChest();

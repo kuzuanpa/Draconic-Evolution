@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
 
 public class ParticleDistortion extends EntityFX {
-    double originalX;
-    double originalZ;
+    final double originalX;
+    final double originalZ;
 
     public ParticleDistortion(World par1World, double par2, double par4, double par6, float par8, float par9, float par10, float scale) {
         this(par1World, par2, par4, par6, 1.0F, par8, par9, par10, scale);

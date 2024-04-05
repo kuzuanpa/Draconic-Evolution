@@ -26,14 +26,14 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class GUIUpgradeModifier extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileUpgradeModifier tile;
+    public final EntityPlayer player;
+    private final TileUpgradeModifier tile;
 
     public boolean inUse = false;
     private IUpgradableItem upgradableItem = null;
     private ItemStack stack = null;
     private List<EnumUpgrade> itemUpgrades = new ArrayList<EnumUpgrade>();
-    private ContainerUpgradeModifier containerEM;
+    private final ContainerUpgradeModifier containerEM;
 
     public GUIUpgradeModifier(InventoryPlayer invPlayer, TileUpgradeModifier tile, ContainerUpgradeModifier containerEM) {
         super(containerEM);
@@ -102,7 +102,7 @@ public class GUIUpgradeModifier extends GuiContainer {
     private int coreSlots = 0;
     private int coreTier = 0;
     private int usedSlots = 0;
-    private boolean[] coreInInventory = new boolean[4];
+    private final boolean[] coreInInventory = new boolean[4];
 
     @Override
     public void updateScreen() {

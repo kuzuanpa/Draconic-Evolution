@@ -29,11 +29,11 @@ import java.util.*;
  * Created by Brandon on 8/02/2015.
  */
 public class ResourceHandler {
-    public static ResourceHandler instance = new ResourceHandler();
+    public static final ResourceHandler instance = new ResourceHandler();
     private static ResourceLocation defaultParticles;
-    private static ResourceLocation particles = new ResourceLocation(References.RESOURCESPREFIX + "textures/particle/particles.png");
-    private static Map<String, ResourceLocation> cachedResources = new HashMap<String, ResourceLocation>();
-    public static Map<String, CustomResourceLocation> downloadedImages = new HashMap<String, CustomResourceLocation>();
+    private static final ResourceLocation particles = new ResourceLocation(References.RESOURCESPREFIX + "textures/particle/particles.png");
+    private static final Map<String, ResourceLocation> cachedResources = new HashMap<String, ResourceLocation>();
+    public static final Map<String, CustomResourceLocation> downloadedImages = new HashMap<String, CustomResourceLocation>();
 
 
     private static String savePath;
@@ -69,9 +69,9 @@ public class ResourceHandler {
 
 
     public static class DownloadThread extends Thread {
-        private List<String> imageURLs;
+        private final List<String> imageURLs;
         private boolean isFinished = false;
-        private boolean wasSuccessful = true;
+        private final boolean wasSuccessful = true;
         private boolean reloadRequired = false;
 
         public DownloadThread(List<String> imageURLs) {

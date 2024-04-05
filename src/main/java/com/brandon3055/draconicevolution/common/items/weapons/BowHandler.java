@@ -122,8 +122,8 @@ public class BowHandler {
 
 
     public static class BowProperties {
-        public ItemStack bow;
-        public EntityPlayer player;
+        public final ItemStack bow;
+        public final EntityPlayer player;
 
         public float arrowDamage = 0F;
         public float arrowSpeed = 0F;

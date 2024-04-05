@@ -50,7 +50,7 @@ public class TileParticleGenerator extends TileEntity implements IDEPeripheral {
     public int spawn_rate = 1;
     public boolean collide = false;
     public int selected_particle = 1;
-    public int selected_max = 3;
+    public final int selected_max = 3;
     public float gravity = 0F;
     public boolean active = true;
     public boolean signal = false;
@@ -92,8 +92,7 @@ public class TileParticleGenerator extends TileEntity implements IDEPeripheral {
         if (stabalizerMode) return;
 
         if (signal && !inverted) active = true;
-        else if (!signal && inverted) active = true;
-        else active = false;
+        else active = !signal && inverted;
 
         if (tick >= spawn_rate && active && particles_enabled) {
             tick = 0;

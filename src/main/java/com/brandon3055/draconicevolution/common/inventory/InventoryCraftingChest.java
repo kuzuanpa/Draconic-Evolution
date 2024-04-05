@@ -12,14 +12,14 @@ public class InventoryCraftingChest extends InventoryCrafting {
     /**
      * the width of the crafting inventory
      */
-    private int inventoryWidth;
+    private final int inventoryWidth;
 
     /**
      * Class containing the callbacks for the events on_GUIClosed and
      * on_CraftMaxtrixChanged.
      */
-    private Container eventHandler;
-    private TileDraconiumChest tile;
+    private final Container eventHandler;
+    private final TileDraconiumChest tile;
 
     public InventoryCraftingChest(Container par1Container, int size, int height, TileDraconiumChest tile) {
         super(par1Container, size, height);
@@ -79,8 +79,6 @@ public class InventoryCraftingChest extends InventoryCrafting {
                 itemstack = stack.copy();
                 stack = null;
                 tile.setInventoryCraftingSlotContents(slotID + 1, null);
-                eventHandler.onCraftMatrixChanged(this);
-                return itemstack;
             } else {
                 itemstack = stack.splitStack(par2);
 
@@ -88,9 +86,9 @@ public class InventoryCraftingChest extends InventoryCrafting {
                     stack = null;
                 }
 
-                eventHandler.onCraftMatrixChanged(this);
-                return itemstack;
             }
+            eventHandler.onCraftMatrixChanged(this);
+            return itemstack;
         } else {
             return null;
         }

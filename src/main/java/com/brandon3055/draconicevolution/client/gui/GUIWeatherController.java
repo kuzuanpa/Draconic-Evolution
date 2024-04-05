@@ -20,8 +20,8 @@ import com.brandon3055.draconicevolution.common.tileentities.TileWeatherControll
 @SideOnly(Side.CLIENT)
 public class GUIWeatherController extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileWeatherController tileWC;
+    public final EntityPlayer player;
+    private final TileWeatherController tileWC;
     private int charges;
     private int guiUpdateTick;
 

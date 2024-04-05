@@ -33,9 +33,9 @@ import java.util.List;
 public class GUITeleporter extends GuiScreen {
     private final int xSize = 182;
     private final int ySize = 141;
-    private ResourceLocation guiTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/TeleporterMKII.png");
+    private final ResourceLocation guiTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/gui/TeleporterMKII.png");
     private ItemStack teleporterItem;
-    protected List<TeleportLocation> locations = new ArrayList<TeleportLocation>(0);
+    protected final List<TeleportLocation> locations = new ArrayList<TeleportLocation>(0);
 
     private int selected = 0;
     private int selectionOffset = 0;
@@ -47,7 +47,7 @@ public class GUITeleporter extends GuiScreen {
     private int tick = 0;
     private GuiTextField textBeingEdited;
 
-    private EntityPlayer player;
+    private final EntityPlayer player;
 
     public GUITeleporter(EntityPlayer player) {
         super();

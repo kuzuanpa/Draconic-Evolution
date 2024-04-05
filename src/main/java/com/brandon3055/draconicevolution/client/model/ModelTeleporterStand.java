@@ -8,12 +8,12 @@ import net.minecraft.client.model.ModelRenderer;
  */
 public class ModelTeleporterStand extends ModelBase {
 
-    ModelRenderer plate;
-    ModelRenderer holders;
-    ModelRenderer support;
-    ModelRenderer collum;
-    ModelRenderer baseTop;
-    ModelRenderer baseBottom;
+    final ModelRenderer plate;
+    final ModelRenderer holders;
+    final ModelRenderer support;
+    final ModelRenderer collum;
+    final ModelRenderer baseTop;
+    final ModelRenderer baseBottom;
 
     public ModelTeleporterStand() {
         textureWidth = 64;

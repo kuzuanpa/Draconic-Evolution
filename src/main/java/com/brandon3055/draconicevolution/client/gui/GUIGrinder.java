@@ -21,8 +21,8 @@ import java.util.ArrayList;
 @SideOnly(Side.CLIENT)
 public class GUIGrinder extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileGrinder tile;
+    public final EntityPlayer player;
+    private final TileGrinder tile;
     private int guiUpdateTick;
 
     public GUIGrinder(InventoryPlayer invPlayer, TileGrinder tile) {
@@ -56,11 +56,11 @@ public class GUIGrinder extends GuiContainer {
         }
         float fuel = tile.burnTimeRemaining / ((float) tile.burnTime) * -1 + 1;
 
-        drawTexturedModalRect(guiLeft + 83, guiTop + 11 + (int) (power * 40), xSize, 0 + (int) (power * 40), 12, 40 - (int) (power * 40));//Power bar
+        drawTexturedModalRect(guiLeft + 83, guiTop + 11 + (int) (power * 40), xSize, (int) (power * 40), 12, 40 - (int) (power * 40));//Power bar
         drawTexturedModalRect(guiLeft + 100, guiTop + 37 + (int) (fuel * 13), xSize, 40 + (int) (fuel * 13), 18, 18 - (int) (fuel * 13));//Power bar
         if (tile.isExternallyPowered()) drawTexturedModalRect(guiLeft + 100, guiTop + 37, xSize, 66, 13, 13);
 
-        fontRendererObj.drawStringWithShadow("Grinder", guiLeft + 71, guiTop + 0, 0x00FFFF);
+        fontRendererObj.drawStringWithShadow("Grinder", guiLeft + 71, guiTop, 0x00FFFF);
 
         int x = X - guiLeft;
         int y = Y - guiTop;

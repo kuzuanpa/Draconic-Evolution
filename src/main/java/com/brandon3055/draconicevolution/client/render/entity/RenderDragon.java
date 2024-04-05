@@ -33,7 +33,7 @@ public class RenderDragon extends RenderLiving {
     /**
      * An instance of the dragon model in RenderDragon
      */
-    protected ModelDragon modelDragon;
+    protected final ModelDragon modelDragon;
 
     public RenderDragon() {
         super(new ModelDragon(0.0F), 0.5F);
@@ -109,7 +109,8 @@ public class RenderDragon extends RenderLiving {
             float f5 = (float) ((double) f3 + dragon.healingEnderCrystal.posY - 1.0D - dragon.posY - (dragon.prevPosY - dragon.posY) * (double) (1.0F - p_76986_9_));
             float f6 = (float) (dragon.healingEnderCrystal.posZ - dragon.posZ - (dragon.prevPosZ - dragon.posZ) * (double) (1.0F - p_76986_9_));
             float f7 = MathHelper.sqrt_float(f4 * f4 + f6 * f6);
-            float f8 = MathHelper.sqrt_float(f4 * f4 + f5 * f5 + f6 * f6);
+            float v = f4 * f4 + f5 * f5 + f6 * f6;
+            float f8 = MathHelper.sqrt_float(v);
             GL11.glPushMatrix();
             GL11.glTranslatef((float) p_76986_2_, (float) p_76986_4_ + 2.0F, (float) p_76986_6_);
             GL11.glRotatef((float) (-Math.atan2((double) f6, (double) f4)) * 180.0F / (float) Math.PI - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -120,14 +121,14 @@ public class RenderDragon extends RenderLiving {
             this.bindTexture(enderDragonCrystalBeamTextures);
             GL11.glShadeModel(GL11.GL_SMOOTH);
             float f9 = 0.0F - ((float) dragon.ticksExisted + p_76986_9_) * 0.01F;
-            float f10 = MathHelper.sqrt_float(f4 * f4 + f5 * f5 + f6 * f6) / 32.0F - ((float) dragon.ticksExisted + p_76986_9_) * 0.01F;
+            float f10 = MathHelper.sqrt_float(v) / 32.0F - ((float) dragon.ticksExisted + p_76986_9_) * 0.01F;
             tessellator.startDrawing(5);
             byte b0 = 8;
 
             for (int i = 0; i <= b0; ++i) {
                 float f11 = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.0F / (float) b0) * 0.75F;
                 float f12 = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.0F / (float) b0) * 0.75F;
-                float f13 = (float) (i % b0) * 1.0F / (float) b0;
+                float f13 = (float) (i % b0) / (float) b0;
                 tessellator.setColorOpaque_I(0);
                 tessellator.addVertexWithUV((double) (f11 * 0.2F), (double) (f12 * 0.2F), 0.0D, (double) f13, (double) f10);
                 tessellator.setColorOpaque_I(16777215);
@@ -166,7 +167,7 @@ public class RenderDragon extends RenderLiving {
             for (int i = 0; i <= b0; ++i) {
                 float f11 = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.0F / (float) b0) * 0.75F;
                 float f12 = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.0F / (float) b0) * 0.75F;
-                float f13 = (float) (i % b0) * 1.0F / (float) b0;
+                float f13 = (float) (i % b0) / (float) b0;
                 tessellator.setColorOpaque_I(0);
                 tessellator.addVertexWithUV((double) (f11 * 0.2F), (double) (f12 * 0.2F), 0.0D, (double) f13, (double) f10);
                 tessellator.setColorOpaque_I(0xFF0000);
@@ -271,7 +272,7 @@ public class RenderDragon extends RenderLiving {
                 tessellator.setColorRGBA_I(16711935, 0);
                 tessellator.addVertex(-0.866D * (double) f4, (double) f3, (double) (-0.5F * f4));
                 tessellator.addVertex(0.866D * (double) f4, (double) f3, (double) (-0.5F * f4));
-                tessellator.addVertex(0.0D, (double) f3, (double) (1.0F * f4));
+                tessellator.addVertex(0.0D, (double) f3, (double) (f4));
                 tessellator.addVertex(-0.866D * (double) f4, (double) f3, (double) (-0.5F * f4));
                 tessellator.draw();
             }
@@ -308,7 +309,7 @@ public class RenderDragon extends RenderLiving {
             char c0 = 61680;
             int j = c0 % 65536;
             int k = c0 / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) j / 1.0F, (float) k / 1.0F);
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) j, (float) k);
             GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             return 1;

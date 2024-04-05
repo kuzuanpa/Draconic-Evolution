@@ -9,7 +9,7 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 public class RenderParticleGen implements IItemRenderer {
-    private TileEntity tile;
+    private final TileEntity tile;
 
     public RenderParticleGen() {
         this.tile = new TileParticleGenerator();

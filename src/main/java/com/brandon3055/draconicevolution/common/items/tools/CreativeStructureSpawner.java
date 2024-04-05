@@ -47,9 +47,8 @@ public class CreativeStructureSpawner extends ItemDE {
                 //new WorldGenEnderIsland().generate(world, new Random(), (int)player.posX, (int)player.posY + 10, (int)player.posZ);
                 break;
             case 2:
-
-                break;
             case 3:
+
                 break;
         }
         return stack;
@@ -62,7 +61,7 @@ public class CreativeStructureSpawner extends ItemDE {
 
         switch (stack.getItemDamage()) {
             case 0:
-                break;
+            case 3:
             case 1:
                 break;
             case 2:
@@ -71,8 +70,6 @@ public class CreativeStructureSpawner extends ItemDE {
                 tileChaosShard.locationHash = tileChaosShard.getLocationHash(x, y, z, player.dimension);
                 tileChaosShard.guardianDefeated = true;
                 world.markBlockForUpdate(x, y, z);
-                break;
-            case 3:
                 break;
         }
         return false;

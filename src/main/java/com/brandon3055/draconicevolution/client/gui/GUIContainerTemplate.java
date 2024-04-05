@@ -16,8 +16,8 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class GUIContainerTemplate extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileContainerTemplate tile;
+    public final EntityPlayer player;
+    private final TileContainerTemplate tile;
 
     public GUIContainerTemplate(InventoryPlayer invPlayer, TileContainerTemplate tile) {
         super(new ContainerTemplate(invPlayer, tile));

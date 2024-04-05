@@ -22,7 +22,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
 public class Potentiometer extends BlockDE {
-    IIcon icons[] = new IIcon[16];
+    final IIcon[] icons = new IIcon[16];
 
     public Potentiometer() {
         super(Material.circuits);
@@ -160,11 +160,7 @@ public class Potentiometer extends BlockDE {
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
         if (this.isLocationStillValid(world, x, y, z)) {
             int l = world.getBlockMetadata(x, y, z) & 7;
-            boolean flag = false;
-
-            if (!world.isSideSolid(x, y - 1, z, UP) && l == 6) {
-                flag = true;
-            }
+            boolean flag = !world.isSideSolid(x, y - 1, z, UP) && l == 6;
 
             if (!world.isSideSolid(x - 1, y, z, EAST) && l == 1) {
                 flag = true;

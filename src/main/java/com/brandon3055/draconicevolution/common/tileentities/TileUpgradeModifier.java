@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
  * Created by brandon3055 on 23/12/2015.
  */
 public class TileUpgradeModifier extends TileEntity implements ISidedInventory {
-    ItemStack[] items = new ItemStack[1];
+    final ItemStack[] items = new ItemStack[1];
 
     public float rotation = 0;
     public float rotationSpeed = 0;

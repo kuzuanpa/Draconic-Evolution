@@ -17,9 +17,9 @@ import static org.lwjgl.opengl.GL11.*;
  */
 public class RenderTileDraconiumChest extends TileEntitySpecialRenderer {
 
-    ModelChest model;
+    final ModelChest model;
     private final ResourceLocation texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/DraconiumChest.png");
-    private Random random;
+    private final Random random;
 
     public RenderTileDraconiumChest() {
         model = new ModelChest();

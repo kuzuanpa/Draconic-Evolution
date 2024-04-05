@@ -28,8 +28,8 @@ import java.util.Map;
  * Created by Brandon on 19/03/2015.
  */
 public class ComponentManualPage extends ComponentScrollingBase {
-    public ManualPage page;
-    public List<ContentComponent> contentList = new ArrayList<ContentComponent>();
+    public final ManualPage page;
+    public final List<ContentComponent> contentList = new ArrayList<ContentComponent>();
     private int pageLength = 0;
     ItemStack stack = null;
     private int slideTick = 0;
@@ -99,20 +99,20 @@ public class ComponentManualPage extends ComponentScrollingBase {
 
     private static class ContentComponent {
 
-        private String content;
+        private final String content;
         /**
          * 0 = text, 1 = image, 2 = crafting
          */
         private int type;
-        public int yPos;
-        private ComponentManualPage page;
+        public final int yPos;
+        private final ComponentManualPage page;
         private String[] textLines;
-        private List<IRecipe> recipes = new ArrayList<IRecipe>();
-        private List<ItemStack> smeltingRecipes = new ArrayList<ItemStack>();
+        private final List<IRecipe> recipes = new ArrayList<IRecipe>();
+        private final List<ItemStack> smeltingRecipes = new ArrayList<ItemStack>();
         private ItemStack result;
         private boolean isTitle = false;
         private boolean slide = false;
-        private List<String> slides = new ArrayList<String>();
+        private final List<String> slides = new ArrayList<String>();
 
         public ContentComponent(String content, int y, ComponentManualPage page) {
             this.content = content;
@@ -148,7 +148,7 @@ public class ComponentManualPage extends ComponentScrollingBase {
                     }
                     sl.add(s);
                 }
-                textLines = sl.toArray(new String[sl.size()]);
+                textLines = sl.toArray(new String[0]);
             } else if (type == 2) {
                 String s = content.substring(content.indexOf("[c]") + 3);
                 String name = s.substring(0, s.lastIndexOf(":"));

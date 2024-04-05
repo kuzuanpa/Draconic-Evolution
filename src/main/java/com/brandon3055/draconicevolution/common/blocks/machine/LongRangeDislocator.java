@@ -89,8 +89,8 @@ public class LongRangeDislocator extends BlockDE {
         if (admin) {
             int randX = ConfigHandler.admin_dislocator_Min_Range + rand.nextInt(ConfigHandler.admin_dislocator_Max_Range - ConfigHandler.admin_dislocator_Min_Range);
             int randZ = ConfigHandler.admin_dislocator_Min_Range + rand.nextInt(ConfigHandler.admin_dislocator_Max_Range - ConfigHandler.admin_dislocator_Min_Range);
-            randX = rand.nextBoolean() ? randX * -1 : randX * 1;
-            randZ = rand.nextBoolean() ? randZ * -1 : randZ * 1;
+            randX = rand.nextBoolean() ? randX * -1 : randX;
+            randZ = rand.nextBoolean() ? randZ * -1 : randZ;
             randX += (int) player.posX;
             randZ += (int) player.posZ;
             int y = 255;
@@ -115,8 +115,8 @@ public class LongRangeDislocator extends BlockDE {
         } else {
             int randX = ConfigHandler.dislocator_Min_Range + rand.nextInt(ConfigHandler.dislocator_Max_Range - ConfigHandler.dislocator_Min_Range);
             int randZ = ConfigHandler.dislocator_Min_Range + rand.nextInt(ConfigHandler.dislocator_Max_Range - ConfigHandler.dislocator_Min_Range);
-            randX = rand.nextBoolean() ? randX * -1 : randX * 1;
-            randZ = rand.nextBoolean() ? randZ * -1 : randZ * 1;
+            randX = rand.nextBoolean() ? randX * -1 : randX;
+            randZ = rand.nextBoolean() ? randZ * -1 : randZ;
             int y = 255;
             for (int i = 255; i > 1; i--) {
                 if (world.getBlock(randX, i, randZ) != Blocks.air) {

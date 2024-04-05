@@ -40,13 +40,13 @@ public class TileSunDial extends TileEntity implements IInventory {
         if (tick < 74) {
             worldObj.spawnParticle("explode", xCoord + 0.5, yCoord + 0.1, zCoord, 0D, 0D, -0.01D);
             worldObj.spawnParticle("explode", xCoord + 0.5, yCoord + 0.1, zCoord + 1, 0D, 0D, 0.01D);
-            worldObj.spawnParticle("explode", xCoord + 0, yCoord + 0.1, zCoord + 0.5, -0.01D, 0D, 0D);
+            worldObj.spawnParticle("explode", xCoord, yCoord + 0.1, zCoord + 0.5, -0.01D, 0D, 0D);
             worldObj.spawnParticle("explode", xCoord + 1, yCoord + 0.1, zCoord + 0.5, 0.01D, 0D, 0D);
         }
         if (tick > 74 && tick2 == 1) {
             worldObj.spawnParticle("flame", xCoord + worldObj.rand.nextFloat(), yCoord + worldObj.rand.nextFloat(), zCoord, 0D, 0D, -0.01D);
             worldObj.spawnParticle("flame", xCoord + worldObj.rand.nextFloat(), yCoord + worldObj.rand.nextFloat(), zCoord + 1, 0D, 0D, 0.01D);
-            worldObj.spawnParticle("flame", xCoord + 0, yCoord + worldObj.rand.nextFloat(), zCoord + worldObj.rand.nextFloat(), -0.01D, 0D, 0D);
+            worldObj.spawnParticle("flame", xCoord, yCoord + worldObj.rand.nextFloat(), zCoord + worldObj.rand.nextFloat(), -0.01D, 0D, 0D);
             worldObj.spawnParticle("flame", xCoord + 1, yCoord + worldObj.rand.nextFloat(), zCoord + worldObj.rand.nextFloat(), 0.01D, 0D, 0D);
         }
         if (tick > 74) Track(getTime());

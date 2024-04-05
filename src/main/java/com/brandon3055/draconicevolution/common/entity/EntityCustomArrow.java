@@ -42,7 +42,7 @@ public class EntityCustomArrow extends EntityArrow {
     //Arrow Properties
     public boolean ignorSpeed = false;    //old
     public boolean explosive = false;    //old
-    public int knockbackStrength = 0;
+    public final int knockbackStrength = 0;
 
     public BowHandler.BowProperties bowProperties = new BowHandler.BowProperties();
 
@@ -69,7 +69,7 @@ public class EntityCustomArrow extends EntityArrow {
     @Override
     protected void entityInit() {
         super.entityInit();
-        this.dataWatcher.addObject(17, Byte.valueOf((byte) 0));
+        this.dataWatcher.addObject(17, (byte) 0);
         //this.dataWatcher.updateObject(17, Byte.valueOf((byte)(bowProperties.energyBolt ? 1 : 0)));
     }
 

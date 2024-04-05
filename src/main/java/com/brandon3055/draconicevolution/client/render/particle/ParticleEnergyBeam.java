@@ -37,7 +37,7 @@ public class ParticleEnergyBeam extends EntityFX {
     /**
      * Modified Target X
      */
-    private boolean advanced;
+    private final boolean advanced;
     private boolean renderParticle = true;
     private float length = 0.0F;
     private float rotYaw = 0.0F;
@@ -48,8 +48,8 @@ public class ParticleEnergyBeam extends EntityFX {
 
     //todo make sure not dyrectly up or down on y axis, Set dead when player goes out of range, PaRTICLE eNGINE
 
-    private static ResourceLocation beamTextureBasic = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/EnergyBeamBlue.png");
-    private static ResourceLocation beamTextureAdvanced = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/EnergyBeamRed.png");
+    private static final ResourceLocation beamTextureBasic = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/EnergyBeamBlue.png");
+    private static final ResourceLocation beamTextureAdvanced = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/EnergyBeamRed.png");
 
 
     /**
@@ -188,8 +188,8 @@ public class ParticleEnergyBeam extends EntityFX {
         }
 
         if (ClientEventHandler.playerHoldingWrench) {
-            var44 = -0.15D * (double) 1;
-            var17 = 0.15D * (double) 1;
+            var44 = -0.15D;
+            var17 = 0.15D;
 
             //GL11.glColor4f(1f, 1f, 1f, 1f);
             //GL11.glTranslated(0.1, 0, 0);

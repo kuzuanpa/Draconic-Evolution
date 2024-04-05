@@ -13,10 +13,10 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 29/10/2015.
  */
 public class RenderBowModel implements IItemRenderer {
-    private boolean draconic;
-    private IModelCustom[] wyvernModels = new IModelCustom[4];
-    private IModelCustom[] draconicModels = new IModelCustom[4];
-    private IModelCustom arrow;
+    private final boolean draconic;
+    private final IModelCustom[] wyvernModels = new IModelCustom[4];
+    private final IModelCustom[] draconicModels = new IModelCustom[4];
+    private final IModelCustom arrow;
 
     public RenderBowModel(boolean draconic) {
         this.draconic = draconic;

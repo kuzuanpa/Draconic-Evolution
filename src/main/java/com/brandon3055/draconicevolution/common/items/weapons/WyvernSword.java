@@ -42,9 +42,9 @@ import org.lwjgl.opengl.GL11;
 
 public class WyvernSword extends ItemSword implements IEnergyContainerWeaponItem, IInventoryTool, IRenderTweak, IUpgradableItem, IHudDisplayItem {
 
-    protected int capacity = BalanceConfigHandler.wyvernWeaponsBaseStorage;
-    protected int maxReceive = BalanceConfigHandler.wyvernWeaponsMaxTransfer;
-    protected int maxExtract = BalanceConfigHandler.wyvernWeaponsMaxTransfer;
+    protected final int capacity = BalanceConfigHandler.wyvernWeaponsBaseStorage;
+    protected final int maxReceive = BalanceConfigHandler.wyvernWeaponsMaxTransfer;
+    protected final int maxExtract = BalanceConfigHandler.wyvernWeaponsMaxTransfer;
 
     public WyvernSword() {
         super(ModItems.WYVERN);

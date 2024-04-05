@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
  * Created by brandon3055 on 24/9/2015.
  */
 public class RenderTileChaosShard extends TileEntitySpecialRenderer {
-    public static IModelCustom model = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/chaosCrystal.obj"));
+    public static final IModelCustom model = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/chaosCrystal.obj"));
 
     @Override
     public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float tick) {

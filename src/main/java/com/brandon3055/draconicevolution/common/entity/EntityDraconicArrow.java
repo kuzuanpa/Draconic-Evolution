@@ -37,8 +37,8 @@ public class EntityDraconicArrow extends EntityArrow {
      * The amount of knockback an arrow applies when it hits a mob.
      */
     private int knockbackStrength;
-    public boolean ignorSpeed = false;
-    public boolean explosive = false;
+    public final boolean ignorSpeed = false;
+    public final boolean explosive = false;
 
     public EntityDraconicArrow(World p_i1753_1_) {
         super(p_i1753_1_);
@@ -222,14 +222,11 @@ public class EntityDraconicArrow extends EntityArrow {
                         f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
                         k = MathHelper.ceiling_double_int(f2 * this.damage);
 
-                        if (this.getIsCritical()) {
-                            k += this.rand.nextInt(k / 2 + 2);
-                        }
                     } else {
                         k = (int) this.damage;
-                        if (this.getIsCritical()) {
-                            k += this.rand.nextInt(k / 2 + 2);
-                        }
+                    }
+                    if (this.getIsCritical()) {
+                        k += this.rand.nextInt(k / 2 + 2);
                     }
 
                     DamageSource damagesource = null;
@@ -461,9 +458,9 @@ public class EntityDraconicArrow extends EntityArrow {
         byte b0 = this.dataWatcher.getWatchableObjectByte(16);
 
         if (par1) {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 | 1)));
+            this.dataWatcher.updateObject(16, (byte) (b0 | 1));
         } else {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 & -2)));
+            this.dataWatcher.updateObject(16, (byte) (b0 & -2));
         }
     }
 

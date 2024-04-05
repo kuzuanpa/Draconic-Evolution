@@ -21,7 +21,7 @@ public class ComponentFieldAdjuster extends ComponentBase {
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
 
     public ItemConfigField field;
-    public GUIToolConfig gui;
+    public final GUIToolConfig gui;
 
     public ComponentFieldAdjuster(int x, int y, ItemConfigField field, GUIToolConfig gui) {
         super(x, y);

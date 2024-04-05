@@ -24,11 +24,11 @@ public class ContainerDraconiumChest extends Container {
     /**
      * The crafting matrix inventory (3x3).
      */
-    public InventoryCrafting craftMatrix;
-    public IInventory craftResult;
-    private TileDraconiumChest tile;
-    private EntityPlayer player;
-    private World worldObj;
+    public final InventoryCrafting craftMatrix;
+    public final IInventory craftResult;
+    private final TileDraconiumChest tile;
+    private final EntityPlayer player;
+    private final World worldObj;
 
     private int lastProgressTime;
     /**
@@ -172,8 +172,8 @@ public class ContainerDraconiumChest extends Container {
     @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
-        for (int i = 0; i < this.crafters.size(); ++i) {
-            ICrafting icrafting = (ICrafting) this.crafters.get(i);
+        for (Object crafter : this.crafters) {
+            ICrafting icrafting = (ICrafting) crafter;
 
             if (lastProgressTime != tile.smeltingProgressTime) {
                 icrafting.sendProgressBarUpdate(this, 0, tile.smeltingProgressTime);

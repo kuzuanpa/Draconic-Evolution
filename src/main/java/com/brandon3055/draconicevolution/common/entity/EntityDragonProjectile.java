@@ -30,14 +30,14 @@ public class EntityDragonProjectile extends Entity {
 
     public int type = 0;
     public EntityLivingBase target;
-    public Entity shooter;
-    public float power;
+    public final Entity shooter;
+    public final float power;
     public boolean isChaser;
     private double lastTickTargetDistance = 100;
     private float heath = 5F;
-    private DamageSource damageFireball = new DamageSource("de.GuardianFireball").setDamageAllowedInCreativeMode().setMagicDamage().setExplosion();
-    private DamageSource damageEnergy = new DamageSource("de.GuardianEnergyBall").setDamageAllowedInCreativeMode().setDamageBypassesArmor();
-    private DamageSource damageChaos = new DamageSource("de.GuardianChaosBall").setDamageAllowedInCreativeMode().setDamageBypassesArmor().setDamageIsAbsolute();
+    private final DamageSource damageFireball = new DamageSource("de.GuardianFireball").setDamageAllowedInCreativeMode().setMagicDamage().setExplosion();
+    private final DamageSource damageEnergy = new DamageSource("de.GuardianEnergyBall").setDamageAllowedInCreativeMode().setDamageBypassesArmor();
+    private final DamageSource damageChaos = new DamageSource("de.GuardianChaosBall").setDamageAllowedInCreativeMode().setDamageBypassesArmor().setDamageIsAbsolute();
 
     //public static final int FIREBALL = 0; 			/** Generic fireball a lot more powerful then ghast fireball */
     public static final int FIREBOMB = 1;
@@ -330,15 +330,13 @@ public class EntityDragonProjectile extends Entity {
     public int getParticleColour() {
         switch (type) {
             case FIREBOMB:
+            case FIRE_CHASER:
                 return 0xFF6600;
             case TELEPORT:
                 return 0;
-            case FIRE_CHASER:
-                return 0xFF6600;
             case ENERGY_CHASER:
                 return 0x00FFFF;
             case CHAOS_CHASER:
-                return 0x440000;
             case MINI_CHAOS_CHASER:
                 return 0x440000;
             case IGNITION_CHARGE:

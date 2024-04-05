@@ -19,8 +19,8 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class GUIDissEnchanter extends GuiContainer {
 
-    public EntityPlayer player;
-    private TileDissEnchanter tile;
+    public final EntityPlayer player;
+    private final TileDissEnchanter tile;
     private boolean cachRecipeValid = false;
     private int cachCost = 0;
 

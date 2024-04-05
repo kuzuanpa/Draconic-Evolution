@@ -39,9 +39,9 @@ import java.util.List;
 public class DraconicBow extends ItemBow implements IInventoryTool, IUpgradableItem, IEnergyContainerWeaponItem, IHudDisplayItem {
     public static final String[] bowPullIconNameArray = new String[]{"pulling_0", "pulling_1", "pulling_2"};
 
-    protected int capacity = BalanceConfigHandler.draconicWeaponsBaseStorage;
-    protected int maxReceive = BalanceConfigHandler.draconicWeaponsMaxTransfer;
-    protected int maxExtract = BalanceConfigHandler.draconicWeaponsMaxTransfer;
+    protected final int capacity = BalanceConfigHandler.draconicWeaponsBaseStorage;
+    protected final int maxReceive = BalanceConfigHandler.draconicWeaponsMaxTransfer;
+    protected final int maxExtract = BalanceConfigHandler.draconicWeaponsMaxTransfer;
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 

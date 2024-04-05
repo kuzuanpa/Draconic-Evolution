@@ -9,11 +9,11 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class ManualPage {
 
-    public String name;
+    public final String name;
     public String nameL;
     public int meta;
-    public String[] imageURLs;
-    public String[] content;
+    public final String[] imageURLs;
+    public final String[] content;
     public int scrollOffset = 0;
 
     public ManualPage(String name, String[] imageURLs, String[] content) {

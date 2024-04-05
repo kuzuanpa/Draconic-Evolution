@@ -23,9 +23,9 @@ public class RenderTileParticleGen extends TileEntitySpecialRenderer {
     private final ResourceLocation texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/ParticleGenTextureSheet.png");
     private final ResourceLocation beamTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/stabilizer_beam.png");
     private static final ResourceLocation modelTexture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/stabilizer_sphere.png");
-    private IModelCustom stabilizerSphereModel;
+    private final IModelCustom stabilizerSphereModel;
 
-    private float pxl = 1F / 64;
+    private final float pxl = 1F / 64;
 
     public RenderTileParticleGen() {
         stabilizerSphereModel = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/stabilizer_sphere.obj"));

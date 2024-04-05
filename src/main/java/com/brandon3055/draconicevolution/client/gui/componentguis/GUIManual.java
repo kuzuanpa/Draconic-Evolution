@@ -35,8 +35,8 @@ import java.util.List;
  */
 public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
 
-    private static List<ManualPage> pageList = new ArrayList<ManualPage>();
-    public static List<String> imageURLs = new ArrayList<String>();
+    private static final List<ManualPage> pageList = new ArrayList<ManualPage>();
+    public static final List<String> imageURLs = new ArrayList<String>();
     private static ManualPage currentPage = null;
     private int previousScale = -1;
     private int worldUpdateIn = -1;
@@ -379,7 +379,7 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
                 reader.endObject();
 
                 if (isValidPage(name))
-                    pageList.add(new ManualPage(name, images.toArray(new String[images.size()]), content.toArray(new String[content.size()]), nameL, meta));
+                    pageList.add(new ManualPage(name, images.toArray(new String[0]), content.toArray(new String[0]), nameL, meta));
             }
 
             reader.endArray();
@@ -428,8 +428,7 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
 
     private static boolean isValidPage(String name) {
         if (name.contains("info.")) return true;
-        else if (!ConfigHandler.disabledNamesList.contains(name)) return true;
-        return false;
+        else return !ConfigHandler.disabledNamesList.contains(name);
     }
 
     @Override

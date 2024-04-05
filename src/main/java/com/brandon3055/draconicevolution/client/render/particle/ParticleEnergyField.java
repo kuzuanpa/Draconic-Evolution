@@ -14,8 +14,8 @@ public class ParticleEnergyField extends EntityFX {
     /**
      * Particle Type 0 = Energy Ring, 1 = single particle
      */
-    private int type;
-    private boolean advanced;
+    private final int type;
+    private final boolean advanced;
     private boolean renderParticle = true;
 
     public ParticleEnergyField(World world, double x, double y, double z, int maxAge, int type, boolean advanced) {

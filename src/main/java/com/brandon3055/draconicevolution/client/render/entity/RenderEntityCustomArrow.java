@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL12;
  * Created by brandon3055 on 3/3/2016.
  */
 public class RenderEntityCustomArrow extends Render {
-    private IModelCustom arrow = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/tools/ArrowCommon.obj"));
+    private final IModelCustom arrow = AdvancedModelLoader.loadModel(ResourceHandler.getResource("models/tools/ArrowCommon.obj"));
 
     public void doRender(EntityCustomArrow entityArrow, double x, double y, double z, float f1, float f2) {
         this.bindEntityTexture(entityArrow);

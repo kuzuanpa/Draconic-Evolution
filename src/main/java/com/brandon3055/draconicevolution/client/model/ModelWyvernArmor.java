@@ -8,15 +8,15 @@ import net.minecraft.entity.Entity;
 
 public class ModelWyvernArmor extends ModelBiped {
 
-    public ModelRenderOBJ head;
-    public ModelRenderOBJ body;
-    public ModelRenderOBJ rightArm;
-    public ModelRenderOBJ leftArm;
-    public ModelRenderOBJ belt;
-    public ModelRenderOBJ rightLeg;
-    public ModelRenderOBJ leftLeg;
-    public ModelRenderOBJ rightBoot;
-    public ModelRenderOBJ leftBoot;
+    public final ModelRenderOBJ head;
+    public final ModelRenderOBJ body;
+    public final ModelRenderOBJ rightArm;
+    public final ModelRenderOBJ leftArm;
+    public final ModelRenderOBJ belt;
+    public final ModelRenderOBJ rightLeg;
+    public final ModelRenderOBJ leftLeg;
+    public final ModelRenderOBJ rightBoot;
+    public final ModelRenderOBJ leftBoot;
 
     public ModelWyvernArmor(float f, boolean isHelmet, boolean isChestPiece, boolean isLeggings, boolean isdBoots) {
         super(f, 0.0f, 128, 128);

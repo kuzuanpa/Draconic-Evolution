@@ -32,8 +32,8 @@ import java.util.*;
 public class CustomArmorHandler {
     public static final UUID WALK_SPEED_UUID = UUID.fromString("0ea6ce8e-d2e8-11e5-ab30-625662870761");
     private static final DamageSource ADMIN_KILL = new DamageSource("administrative.kill").setDamageAllowedInCreativeMode().setDamageBypassesArmor().setDamageIsAbsolute();
-    public static Map<EntityPlayer, Boolean> playersWithFlight = new WeakHashMap<EntityPlayer, Boolean>();
-    public static List<String> playersWithUphillStep = new ArrayList<String>();
+    public static final Map<EntityPlayer, Boolean> playersWithFlight = new WeakHashMap<EntityPlayer, Boolean>();
+    public static final List<String> playersWithUphillStep = new ArrayList<String>();
 
     public static void onPlayerHurt(LivingHurtEvent event) {
 //		EntityPlayer player = (EntityPlayer) event.entityLiving;

@@ -28,13 +28,13 @@ public class DraconicEvolution {
     @SidedProxy(clientSide = References.CLIENTPROXYLOCATION, serverSide = References.SERVERPROXYLOCATION)
     public static CommonProxy proxy;
 
-    public static CreativeTabs tabToolsWeapons = new DETab(CreativeTabs.getNextID(), References.MODID, "toolsAndWeapons", 0);
-    public static CreativeTabs tabBlocksItems = new DETab(CreativeTabs.getNextID(), References.MODID, "blocksAndItems", 1);
+    public static final CreativeTabs tabToolsWeapons = new DETab(CreativeTabs.getNextID(), References.MODID, "toolsAndWeapons", 0);
+    public static final CreativeTabs tabBlocksItems = new DETab(CreativeTabs.getNextID(), References.MODID, "blocksAndItems", 1);
 
     public static final String networkChannelName = "DEvolutionNC";
     public static SimpleNetworkWrapper network;
 
-    public static boolean debug = false;//todo
+    public static final boolean debug = false;//todo
 
     public static Enchantment reaperEnchant;
 

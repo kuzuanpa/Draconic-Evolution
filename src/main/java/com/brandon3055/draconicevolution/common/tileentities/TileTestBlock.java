@@ -22,12 +22,12 @@ import static net.minecraftforge.common.util.ForgeDirection.UP;
  * Created by Brandon on 24/06/2014.
  */
 public class TileTestBlock extends TileEntity implements IEnergyHandler {
-    public EnergyStorage energy = new EnergyStorage(100000000);
+    public final EnergyStorage energy = new EnergyStorage(100000000);
     public int maxInput = 100000000;
     public float modelRotation;
     //Use a map for the beam to each target (Target, Beam)
-    private ParticleEnergyBeam beam = null;
-    private ParticleEnergyField ring = null;
+    private final ParticleEnergyBeam beam = null;
+    private final ParticleEnergyField ring = null;
 
 
     @Override
@@ -96,15 +96,13 @@ public class TileTestBlock extends TileEntity implements IEnergyHandler {
 
     @Override
     public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
-        if (from != UP) return 0;//this.energy.receiveEnergy(Math.min(maxInput, maxReceive), simulate);
-        else return 0;
+        return 0;//this.energy.receiveEnergy(Math.min(maxInput, maxReceive), simulate);
     }
 
     @Override
     public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
         ;
-        if (from == UP) return 0;//return this.energy.extractEnergy(maxExtract, simulate);
-        else return 0;
+        return 0;//return this.energy.extractEnergy(maxExtract, simulate);
     }
 
     @Override

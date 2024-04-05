@@ -17,7 +17,7 @@ public class RenderTileEnergyInfiser extends TileEntitySpecialRenderer {
 
     private final ResourceLocation texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/EnergyInfuserTextureSheet.png");
 
-    private static float pxl = 1F / 256F;
+    private static final float pxl = 1F / 256F;
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) {

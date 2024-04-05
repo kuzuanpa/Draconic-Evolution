@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 public class RenderTileEnergyPylon extends TileEntitySpecialRenderer {
 
     private static final ResourceLocation model_texture = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/pylon_sphere_texture.png");
-    private IModelCustom model;
+    private final IModelCustom model;
 
     public RenderTileEnergyPylon() {
         model = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/pylon_sphere.obj"));

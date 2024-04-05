@@ -23,7 +23,7 @@ public class ParticleReactorBeam extends EntityFX {
      * Particle Type 0 = Energy Ring, 1 = single particle
      */
     private boolean renderParticle = true;
-    private TileEntity tile;
+    private final TileEntity tile;
     private boolean isInjectorBeam = false;
 
     public ParticleReactorBeam(TileEntity tile) {
@@ -119,7 +119,7 @@ public class ParticleReactorBeam extends EntityFX {
             for (int i = 0; i <= b0; ++i) {
                 float verX = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.3F / (float) b0) * sizeTarget;
                 float verY = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.3F / (float) b0) * sizeTarget;
-                float texU = (float) (i % b0) * 1.0F / (float) b0;
+                float texU = (float) (i % b0) / (float) b0;
                 tessellator.setColorRGBA((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), 0);
 
                 tessellator.addVertexWithUV((double) (verX * sizeOrigin), (double) (verY * sizeOrigin), -0.55D, (double) texU, (double) texV1);
@@ -134,7 +134,7 @@ public class ParticleReactorBeam extends EntityFX {
             for (int i = 0; i <= b0; ++i) {
                 float verX = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.13F / (float) b0) * sizeTarget;
                 float verY = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.13F / (float) b0) * sizeTarget;
-                float texU = (float) (i % b0) * 1.0F / (float) b0;
+                float texU = (float) (i % b0) / (float) b0;
                 tessellator.setColorRGBA((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), alpha);
 
                 tessellator.addVertexWithUV((double) (verX * sizeOrigin), (double) (verY * sizeOrigin), 0.0D, (double) texU, (double) texV1);
@@ -159,7 +159,7 @@ public class ParticleReactorBeam extends EntityFX {
             for (int i = 0; i <= b0; ++i) {
                 float verX = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.13F / (float) b0) * sizeTarget;
                 float verY = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.13F / (float) b0) * sizeTarget;
-                float texU = (float) (i % b0) * 1.0F / (float) b0;
+                float texU = (float) (i % b0) / (float) b0;
                 tessellator.setColorRGBA((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), alpha / 2);
 
                 tessellator.addVertexWithUV((double) (verX * sizeOrigin), (double) (verY * sizeOrigin), 0.0D, (double) texU, (double) texV1);
@@ -225,7 +225,7 @@ public class ParticleReactorBeam extends EntityFX {
         for (int i = 0; i <= b0; ++i) {
             float verX = MathHelper.sin((float) (i % b0) * (float) Math.PI * 2.13325F / (float) b0) * sizeTarget;
             float verY = MathHelper.cos((float) (i % b0) * (float) Math.PI * 2.13325F / (float) b0) * sizeTarget;
-            float texU = (float) (i % b0) * 1.0F / (float) b0;
+            float texU = (float) (i % b0) / (float) b0;
             tessellator.setColorRGBA((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), reverseTransparency ? 0 : (int) (255D * reactor.renderSpeed));
             tessellator.addVertexWithUV((double) (verX * sizeOrigin), (double) (verY * sizeOrigin), 0.0D, (double) texU, (double) texV1);
             tessellator.setColorRGBA((color & 0xFF0000) >> 16, (color & 0xFF00) >> 8, (color & 0xFF), reverseTransparency ? (int) (255D * reactor.renderSpeed) : 0);

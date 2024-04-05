@@ -20,15 +20,15 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderTileCrystal extends TileEntitySpecialRenderer {
 
-    private static ResourceLocation texrure = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalPurpleTransparent.png");
-    private static ResourceLocation crystalBlue = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalBlue.png");
-    private static ResourceLocation crystalBlueAlpha = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalBlueAlpha.png");
-    private static ResourceLocation crystalRed = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalRed.png");
-    private static ResourceLocation crystalRedAlpha = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalRedAlpha.png");
+    private static final ResourceLocation texrure = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalPurpleTransparent.png");
+    private static final ResourceLocation crystalBlue = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalBlue.png");
+    private static final ResourceLocation crystalBlueAlpha = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalBlueAlpha.png");
+    private static final ResourceLocation crystalRed = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalRed.png");
+    private static final ResourceLocation crystalRedAlpha = new ResourceLocation(References.MODID.toLowerCase(), "textures/models/CrystalRedAlpha.png");
 
 
-    private IModelCustom modelCrystal;
-    private IModelCustom modelCrystalTransceiver;
+    private final IModelCustom modelCrystal;
+    private final IModelCustom modelCrystalTransceiver;
 
     public RenderTileCrystal() {
         modelCrystal = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/CCrystal.obj"));

@@ -15,8 +15,8 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerUpgradeModifier extends ContainerDataSync {
     private static final Item[] CORES_INDEX = {ModItems.draconicCore, ModItems.wyvernCore, ModItems.awakenedCore, ModItems.chaoticCore};
-    private TileUpgradeModifier tile;
-    private EntityPlayer player;
+    private final TileUpgradeModifier tile;
+    private final EntityPlayer player;
     private boolean slotsActive = true;
 
     public ContainerUpgradeModifier(InventoryPlayer invPlayer, TileUpgradeModifier tile) {
@@ -40,8 +40,8 @@ public class ContainerUpgradeModifier extends ContainerDataSync {
     @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
-        for (int i = 0; i < this.crafters.size(); ++i) {
-            ICrafting icrafting = (ICrafting) this.crafters.get(i);
+        for (Object crafter : this.crafters) {
+            ICrafting icrafting = (ICrafting) crafter;
             icrafting.sendProgressBarUpdate(this, 0, 0);
         }
         updateSlotState();

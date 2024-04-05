@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public class TileReactorEnergyInjector extends TileEntity implements IReactorPart, IEnergyReceiver, IDEPeripheral {
 
-    public float modelIllumination = 1F;
+    public final float modelIllumination = 1F;
     public int facingDirection = ForgeDirection.UP.ordinal();
     public MultiblockHelper.TileLocation masterLocation = new MultiblockHelper.TileLocation();
     public boolean isValid = false;

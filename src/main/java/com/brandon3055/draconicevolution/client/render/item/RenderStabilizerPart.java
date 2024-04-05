@@ -12,9 +12,9 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderStabilizerPart implements IItemRenderer {
 
-    public static ModelReactorStabilizerCore modelBase = new ModelReactorStabilizerCore();
-    public static ModelReactorStabilizerCore modelBaseRotors = new ModelReactorStabilizerCore();
-    public static ModelReactorStabilizerRing modelRing = new ModelReactorStabilizerRing();
+    public static final ModelReactorStabilizerCore modelBase = new ModelReactorStabilizerCore();
+    public static final ModelReactorStabilizerCore modelBaseRotors = new ModelReactorStabilizerCore();
+    public static final ModelReactorStabilizerRing modelRing = new ModelReactorStabilizerRing();
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {

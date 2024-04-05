@@ -20,7 +20,7 @@ import net.minecraft.util.AxisAlignedBB;
  */
 public class TileEnergyStorageCore extends TileObjectSync {
 
-    protected TileLocation[] stabilizers = new TileLocation[4];
+    protected final TileLocation[] stabilizers = new TileLocation[4];
     protected int tier = 0;
     protected boolean online = false;
     public float modelRotation = 0;
@@ -292,6 +292,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
     }
 
     private boolean testOrActivateRings(int size, int dist, String block, boolean set, boolean activate) {
+        boolean b = !block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air");
         for (int y = yCoord - size; y <= yCoord + size; y++) {
             for (int z = zCoord - size; z <= zCoord + size; z++) {
 
@@ -305,7 +306,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(xCoord + dist == xCoord && y == yCoord && z == zCoord) && !testForOrActivateDraconium(xCoord + dist, y, z, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -325,7 +326,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(xCoord - dist == xCoord && y == yCoord && z == zCoord) && !testForOrActivateDraconium(xCoord - dist, y, z, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -346,7 +347,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(x == xCoord && yCoord + dist == yCoord && z == zCoord) && !testForOrActivateDraconium(x, yCoord + dist, z, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -366,7 +367,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(x == xCoord && yCoord - dist == yCoord && z == zCoord) && !testForOrActivateDraconium(x, yCoord - dist, z, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -387,7 +388,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(x == xCoord && y == yCoord && zCoord + dist == zCoord) && !testForOrActivateDraconium(x, y, zCoord + dist, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -407,7 +408,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                     } else if (block.equals("draconiumBlock")) {
                         if (!(x == xCoord && y == yCoord && zCoord - dist == zCoord) && !testForOrActivateDraconium(x, y, zCoord - dist, set, activate))
                             return false;
-                    } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                    } else {
                         LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                         return false;
                     }
@@ -431,7 +432,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(xCoord + dist == xCoord && y == yCoord && z == zCoord) && !testForOrActivateDraconium(xCoord + dist, y, z, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -449,7 +450,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(xCoord - dist == xCoord && y == yCoord && z == zCoord) && !testForOrActivateDraconium(xCoord - dist, y, z, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -468,7 +469,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(x == xCoord && yCoord + dist == yCoord && z == zCoord) && !testForOrActivateDraconium(x, yCoord + dist, z, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -486,7 +487,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(x == xCoord && yCoord - dist == yCoord && z == zCoord) && !testForOrActivateDraconium(x, yCoord - dist, z, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -505,7 +506,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(x == xCoord && y == yCoord && zCoord + dist == zCoord) && !testForOrActivateDraconium(x, y, zCoord + dist, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -523,7 +524,7 @@ public class TileEnergyStorageCore extends TileObjectSync {
                 } else if (block.equals("draconiumBlock")) {
                     if (!(x == xCoord && y == yCoord && zCoord - dist == zCoord) && !testForOrActivateDraconium(x, y, zCoord - dist, set, activate))
                         return false;
-                } else if (!block.equals("draconiumBlock") && !block.equals("redstone") && !block.equals("air")) {
+                } else {
                     LogHelper.error("Invalid String In Multiblock Structure Code!!!");
                     return false;
                 }
@@ -676,9 +677,9 @@ public class TileEnergyStorageCore extends TileObjectSync {
     }
 
     private boolean checkStabilizers() {
-        for (int i = 0; i < stabilizers.length; i++) {
-            if (stabilizers[i] == null) return false;
-            TileParticleGenerator gen = (worldObj.getTileEntity(stabilizers[i].getXCoord(), stabilizers[i].getYCoord(), stabilizers[i].getZCoord()) != null && worldObj.getTileEntity(stabilizers[i].getXCoord(), stabilizers[i].getYCoord(), stabilizers[i].getZCoord()) instanceof TileParticleGenerator) ? (TileParticleGenerator) worldObj.getTileEntity(stabilizers[i].getXCoord(), stabilizers[i].getYCoord(), stabilizers[i].getZCoord()) : null;
+        for (TileLocation stabilizer : stabilizers) {
+            if (stabilizer == null) return false;
+            TileParticleGenerator gen = (worldObj.getTileEntity(stabilizer.getXCoord(), stabilizer.getYCoord(), stabilizer.getZCoord()) != null && worldObj.getTileEntity(stabilizer.getXCoord(), stabilizer.getYCoord(), stabilizer.getZCoord()) instanceof TileParticleGenerator) ? (TileParticleGenerator) worldObj.getTileEntity(stabilizer.getXCoord(), stabilizer.getYCoord(), stabilizer.getZCoord()) : null;
             if (gen == null || !gen.stabalizerMode) return false;
             if (gen.getMaster().xCoord != xCoord || gen.getMaster().yCoord != yCoord || gen.getMaster().zCoord != zCoord)
                 return false;

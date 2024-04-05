@@ -54,8 +54,7 @@ public class DraconiumChest extends BlockCustomDrop {
     }
 
     public static boolean isStackValid(ItemStack stack) {
-        for (int i = 0; i < STORAGE_BLACKLIST.length; i++)
-            if (stack.getUnlocalizedName().contains(STORAGE_BLACKLIST[i])) return false;
+        for (String s : STORAGE_BLACKLIST) if (stack.getUnlocalizedName().contains(s)) return false;
         return true;
     }
 

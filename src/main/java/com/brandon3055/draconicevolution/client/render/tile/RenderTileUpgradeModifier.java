@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 public class RenderTileUpgradeModifier extends TileEntitySpecialRenderer {
 
 
-    private static float pxl = 1F / 256F;
+    private static final float pxl = 1F / 256F;
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) {

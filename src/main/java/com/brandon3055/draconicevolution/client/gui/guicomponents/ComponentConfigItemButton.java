@@ -20,8 +20,8 @@ import java.util.List;
 public class ComponentConfigItemButton extends ComponentBase {
 
     private static final ResourceLocation texture = new ResourceLocation(References.RESOURCESPREFIX + "textures/gui/Widgets.png");
-    public int slot;
-    private InventoryPlayer inventory;
+    public final int slot;
+    private final InventoryPlayer inventory;
     public boolean hasValidItem = false;
 
     public ComponentConfigItemButton(int x, int y, int slot, EntityPlayer player) {

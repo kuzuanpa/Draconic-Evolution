@@ -213,7 +213,7 @@ public class BalanceConfigHandler {
         draconicArmorMaxUpgradePoints = getInteger("tweaks.armor", "Draconic Armor: Maximum amount of upgrade points", draconicArmorMaxUpgradePoints, draconicArmorMaxUpgrades, Integer.MAX_VALUE);
         draconicArmorMaxCapacityUpgradePoints = Math.max(Math.min(draconicArmorMaxUpgradePoints, draconicArmorMaxCapacityUpgradePoints), 0);
         wyvernToolsMaxCapacityUpgradePoints = (int) Math.floor((double) (Integer.MAX_VALUE - wyvernToolsBaseStorage) / (double) Math.max(wyvernToolsStoragePerUpgrade, 1)) * EnumUpgrade.RF_CAPACITY.pointConversion;
-        wyvernToolsMaxUpgrades = getInteger("tweaks.tools", "Wyvern Tools: Maximum amount of upgrades", wyvernToolsMaxUpgrades, 0, (wyvernToolsMaxDigAOEUpgradePoints - wyvernToolsMinDigAOEUpgradePoints) * EnumUpgrade.DIG_AOE.pointConversion +
+        wyvernToolsMaxUpgrades = getInteger("tweaks.tools", "Wyvern Tools: Maximum amount of upgrades", wyvernToolsMaxUpgrades, 0, EnumUpgrade.DIG_AOE.pointConversion +
                         (wyvernToolsMaxDigSpeedUpgradePoints - wyvernToolsMinDigSpeedUpgradePoints) * EnumUpgrade.DIG_SPEED.pointConversion + wyvernToolsMaxCapacityUpgradePoints);
         wyvernToolsMaxUpgradePoints = getInteger("tweaks.tools", "Wyvern Tools: Maximum amount of upgrade points", wyvernToolsMaxUpgradePoints, wyvernToolsMaxUpgrades, Integer.MAX_VALUE);
         wyvernToolsMaxCapacityUpgradePoints = Math.max(Math.min(wyvernToolsMaxUpgradePoints, wyvernToolsMaxCapacityUpgradePoints), 0);

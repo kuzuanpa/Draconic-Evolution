@@ -15,9 +15,9 @@ import net.minecraft.util.StringUtils;
 public class ItemConfigField {
 
     public Object value;
-    public int slot;
-    public int datatype;
-    public String name;
+    public final int slot;
+    public final int datatype;
+    public final String name;
     public int fieldid;
     public Object max;
     public Object min;

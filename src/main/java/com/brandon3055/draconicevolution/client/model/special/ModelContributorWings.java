@@ -11,14 +11,14 @@ import org.lwjgl.opengl.GL11;
  * Created using Tabula 5.0.0
  */
 public class ModelContributorWings extends ModelBase {
-    public ModelRenderer rightBaseStem;
-    public ModelRenderer leftBaseStem;
-    public ModelRenderer rightOuterStem;
-    public ModelRenderer rightWingInner;
-    public ModelRenderer rightWingOuter;
-    public ModelRenderer leftOuterStem;
-    public ModelRenderer leftWingInner;
-    public ModelRenderer leftWingOuter;
+    public final ModelRenderer rightBaseStem;
+    public final ModelRenderer leftBaseStem;
+    public final ModelRenderer rightOuterStem;
+    public final ModelRenderer rightWingInner;
+    public final ModelRenderer rightWingOuter;
+    public final ModelRenderer leftOuterStem;
+    public final ModelRenderer leftWingInner;
+    public final ModelRenderer leftWingOuter;
 
     public ModelContributorWings() {
         this.textureWidth = 32;

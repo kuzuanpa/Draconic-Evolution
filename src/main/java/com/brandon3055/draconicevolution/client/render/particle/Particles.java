@@ -28,9 +28,9 @@ public class Particles {
         private double masterZ = 0;
         private float rotation = 0;
         private boolean mirror = false;
-        private double[] trailX = new double[15];
-        private double[] trailY = new double[15];
-        private double[] trailZ = new double[15];
+        private final double[] trailX = new double[15];
+        private final double[] trailY = new double[15];
+        private final double[] trailZ = new double[15];
 
         public EnergyBeamParticle(World world, double x, double y, double z, double x1, double z1, int direction, boolean mirror) {
             super(world, x, y, z, 0.0D, 0.0D, 0.0D);
@@ -93,20 +93,18 @@ public class Particles {
                 double masterY = Math.floor(posY) + 0.5;
                 if (direction == 0 || direction == 1) {
                     posZ = masterZ + Math.sin(rotation) * multiplier;
-                    posY = masterY + Math.cos(rotation) * multiplier;
                 } else {
                     posX = masterX + Math.sin(rotation) * multiplier;
-                    posY = masterY + Math.cos(rotation) * multiplier;
                 }
+                posY = masterY + Math.cos(rotation) * multiplier;
                 if (mirror) {
                     float modifier = 3F;
                     if (direction == 0 || direction == 1) {
                         posZ = masterZ + Math.sin(rotation + modifier) * multiplier;
-                        posY = masterY + Math.cos(rotation + modifier) * multiplier;
                     } else {
                         posX = masterX + Math.sin(rotation + modifier) * multiplier;
-                        posY = masterY + Math.cos(rotation + modifier) * multiplier;
                     }
+                    posY = masterY + Math.cos(rotation + modifier) * multiplier;
                 }
                 setPosition(posX, posY, posZ);
             }
@@ -156,9 +154,9 @@ public class Particles {
 
             for (int i = 0; i <= 14; i++) {
                 GL11.glPushMatrix();
-                drawX = (float) (trailX[i] + (trailX[i] - trailX[i]) * (double) par2 - interpPosX);
-                drawY = (float) (trailY[i] + (trailY[i] - trailY[i]) * (double) par2 - interpPosY);
-                drawZ = (float) (trailZ[i] + (trailZ[i] - trailZ[i]) * (double) par2 - interpPosZ);
+                drawX = (float) (trailX[i] + (0.0) * (double) par2 - interpPosX);
+                drawY = (float) (trailY[i] + (0.0) * (double) par2 - interpPosY);
+                drawZ = (float) (trailZ[i] + (0.0) * (double) par2 - interpPosZ);
                 float scale = 0.1F * (1F - ((float) i / 14F));
                 float scale2 = (1F - ((float) i / 14F));
 
@@ -184,10 +182,10 @@ public class Particles {
 
     public static class EnergyTransferParticle extends EntityFX {
 
-        private double targetX;
-        private double targetY;
-        private double targetZ;
-        private boolean passive;
+        private final double targetX;
+        private final double targetY;
+        private final double targetZ;
+        private final boolean passive;
 
         public EnergyTransferParticle(World world, double x, double y, double z, double tX, double tY, double tZ, boolean passive) {
             super(world, x, y, z, 0.0D, 0.0D, 0.0D);
@@ -272,11 +270,11 @@ public class Particles {
 
     public static class AdvancedSeekerParticle extends EntityFX {
 
-        public double targetX;
-        public double targetY;
-        public double targetZ;
+        public final double targetX;
+        public final double targetY;
+        public final double targetZ;
         public double startDist = 0;
-        public int behaviour;
+        public final int behaviour;
         public int timer = 0;
 
         public AdvancedSeekerParticle(World world, double x, double y, double z, double tX, double tY, double tZ, int type, int maxAge) {
@@ -483,9 +481,9 @@ public class Particles {
     }
 
     public static class TransceiverParticle extends EntityFX {
-        public double targetX;
-        public double targetY;
-        public double targetZ;
+        public final double targetX;
+        public final double targetY;
+        public final double targetZ;
         private int textureIndex = 0;
 
         public TransceiverParticle(World world, double x, double y, double z, double tx, double ty, double tz) {
@@ -566,12 +564,12 @@ public class Particles {
     }
 
     public static class PortalParticle extends EntityFX {
-        public double targetX;
-        public double targetY;
-        public double targetZ;
-        public double startX;
-        public double startY;
-        public double startZ;
+        public final double targetX;
+        public final double targetY;
+        public final double targetZ;
+        public final double startX;
+        public final double startY;
+        public final double startZ;
         public float baseScale;
 
         public PortalParticle(World world, double x, double y, double z, double tx, double ty, double tz) {
@@ -658,7 +656,7 @@ public class Particles {
     public static class ReactorExplosionParticle extends EntityFX {
         public static IModelCustom uvSphere;
         public double size = 0;
-        public double maxSize;
+        public final double maxSize;
 
         public ReactorExplosionParticle(World world, double x, double y, double z, double maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
@@ -697,7 +695,7 @@ public class Particles {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 200F, 200F);
             ResourceHandler.bindResource("textures/models/white.png");
-            double s = size + partialTick * 1F;
+            double s = size + partialTick;
             GL11.glScaled(s, s / 4, s);
 
 
@@ -788,7 +786,7 @@ public class Particles {
     public static class ChaosImplosionParticle extends EntityFX {
         public static IModelCustom uvSphere;
         public double size = 0;
-        public double maxSize;
+        public final double maxSize;
 
         public ChaosImplosionParticle(World world, double x, double y, double z, double maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
@@ -826,7 +824,7 @@ public class Particles {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 200F, 200F);
             ResourceHandler.bindResource("textures/models/white.png");
-            double s = size + partialTick * 1F;
+            double s = size + partialTick;
             GL11.glScaled(s, s / 4, s);
 
 
@@ -916,7 +914,7 @@ public class Particles {
 
     public static class DragonProjectileParticle extends EntityFX {
         private EntityDragonProjectile entity;
-        private int particleColour;
+        private final int particleColour;
 
         public DragonProjectileParticle(World world, double x, double y, double z, int colour) {
             super(world, x, y, z);
@@ -945,7 +943,7 @@ public class Particles {
             //particleScale = ((float) (d2 / d1)) * baseScale;
 
             particleAlpha = (1F - (float) ((double) particleAge / particleMaxAge));
-            particleScale = 1F * (1F - (float) ((double) particleAge / particleMaxAge));
+            particleScale = (1F - (float) ((double) particleAge / particleMaxAge));
 
             particleAge++;
             prevPosX = posX;
@@ -1002,12 +1000,12 @@ public class Particles {
     public static class ChaosBoltParticle extends EntityFX {
 
         public int timer = 0;
-        public double focalX;
-        public double focalY;
-        public double focalZ;
-        public double shardX;
+        public final double focalX;
+        public final double focalY;
+        public final double focalZ;
+        public final double shardX;
         public double shardY;
-        public double shardZ;
+        public final double shardZ;
 
         private int mode;
 
@@ -1124,7 +1122,7 @@ public class Particles {
         public static IModelCustom uvSphere;
         private final boolean shrink;
         public double size = 0;
-        public double maxSize = 20;
+        public final double maxSize = 20;
 
         public ChaosExpansionParticle(World world, double x, double y, double z, boolean shrink) {
             super(world, x, y, z, 0D, 0D, 0D);
@@ -1181,8 +1179,8 @@ public class Particles {
     }
 
     public static class ArrowParticle extends EntityFX {
-        private int particleColour;
-        private float setScale;
+        private final int particleColour;
+        private final float setScale;
 
         public ArrowParticle(World world, double x, double y, double z, int colour, float scale) {
             super(world, x, y, z);
@@ -1256,7 +1254,7 @@ public class Particles {
     public static class ArrowShockParticle extends EntityFX {
         public static IModelCustom uvSphere;
         public double size = 0;
-        public double maxSize;
+        public final double maxSize;
 
         public ArrowShockParticle(World world, double x, double y, double z, int maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
@@ -1294,7 +1292,7 @@ public class Particles {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 200F, 200F);
             ResourceHandler.bindResource("textures/models/white.png");
-            double s = size + partialTick * 1F;
+            double s = size + partialTick;
             GL11.glScaled(s, s / 3, s);
 
 

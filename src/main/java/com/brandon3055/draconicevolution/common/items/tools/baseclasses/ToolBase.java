@@ -46,16 +46,16 @@ public class ToolBase extends RFItemBase {
     /**
      * A list of blocks this tool can mine that are not covered by the tool class.
      */
-    private Set blockOverrides;
+    private final Set blockOverrides;
     private float efficiencyOnProperMaterial = 4.0F;
     /**
      * Damage versus entities.
      */
-    public float damageVsEntity;
+    public final float damageVsEntity;
     /**
      * The material this tool is made from.
      */
-    protected Item.ToolMaterial toolMaterial;
+    protected final Item.ToolMaterial toolMaterial;
     /**
      * The amount of energy required to dig one block, damage a mob.
      */

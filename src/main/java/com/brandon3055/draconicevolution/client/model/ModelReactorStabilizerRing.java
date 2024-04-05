@@ -11,26 +11,26 @@ import org.lwjgl.opengl.GL11;
  * Created using Tabula 5.0.0
  */
 public class ModelReactorStabilizerRing extends ModelBase {
-    public ModelRenderer ringElement1;
-    public ModelRenderer ringElement2;
-    public ModelRenderer ringElement3;
-    public ModelRenderer ringElement4;
-    public ModelRenderer ringElement5;
-    public ModelRenderer ringElement6;
-    public ModelRenderer ringElement7;
-    public ModelRenderer ringElement8;
-    public ModelRenderer ringElement9;
-    public ModelRenderer ringElement10;
-    public ModelRenderer ringElement11;
-    public ModelRenderer ringElement12;
-    public ModelRenderer hing1;
-    public ModelRenderer hing2;
-    public ModelRenderer hing3;
-    public ModelRenderer hing4;
-    public ModelRenderer emitter1;
-    public ModelRenderer emitter2;
-    public ModelRenderer emitter3;
-    public ModelRenderer emitter4;
+    public final ModelRenderer ringElement1;
+    public final ModelRenderer ringElement2;
+    public final ModelRenderer ringElement3;
+    public final ModelRenderer ringElement4;
+    public final ModelRenderer ringElement5;
+    public final ModelRenderer ringElement6;
+    public final ModelRenderer ringElement7;
+    public final ModelRenderer ringElement8;
+    public final ModelRenderer ringElement9;
+    public final ModelRenderer ringElement10;
+    public final ModelRenderer ringElement11;
+    public final ModelRenderer ringElement12;
+    public final ModelRenderer hing1;
+    public final ModelRenderer hing2;
+    public final ModelRenderer hing3;
+    public final ModelRenderer hing4;
+    public final ModelRenderer emitter1;
+    public final ModelRenderer emitter2;
+    public final ModelRenderer emitter3;
+    public final ModelRenderer emitter4;
 
     public ModelReactorStabilizerRing() {
         this.textureWidth = 32;

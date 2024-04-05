@@ -4,10 +4,7 @@ import com.brandon3055.draconicevolution.common.utills.LogHelper;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ConfigHandler {
 
@@ -36,10 +33,10 @@ public class ConfigHandler {
     public static int[] oreGenDimentionBlacklist;
     public static int[] hudSettings;
     private static String[] disabledBlocksItems;
-    public static List<String> disabledNamesList = new ArrayList<String>();
+    public static final List<String> disabledNamesList = new ArrayList<String>();
     public static double maxPlayerSpeed;
     private static int[] speedDimBlackList;
-    public static List<Integer> speedLimitDimList = new ArrayList<Integer>();
+    public static final List<Integer> speedLimitDimList = new ArrayList<Integer>();
     public static boolean speedLimitops;
     public static boolean rapidlyDespawnMinedItems;
     public static boolean useOldArmorModel;
@@ -49,7 +46,7 @@ public class ConfigHandler {
     public static boolean disableLog;
     public static boolean enableFlight;
     private static String[] itemDislocatorBlacklist;
-    public static Map<String, Integer> itemDislocatorBlacklistMap = new HashMap<String, Integer>();
+    public static final Map<String, Integer> itemDislocatorBlacklistMap = new HashMap<String, Integer>();
 
     //spawner
     public static String[] spawnerList;
@@ -73,7 +70,7 @@ public class ConfigHandler {
     public static double reactorFuelUsageMultiplier;
 
 
-    private static String[] defaultSpawnerList = new String[]{"ExampleMob1", "ExampleMob2", "ExampleMob3 (these examples can be deleted)"};
+    private static final String[] defaultSpawnerList = new String[]{"ExampleMob1", "ExampleMob2", "ExampleMob3 (these examples can be deleted)"};
 
     public static void init(File confFile) {
         if (config == null) {
@@ -148,9 +145,7 @@ public class ConfigHandler {
             reactorOutputMultiplier = config.get("Draconic Reactor", "EnergyOutputMultiplier", 1, "Use this to adjust the output of the reactor", 0, 1000000).getDouble(1);
 
             disabledNamesList.clear();
-            for (String s : disabledBlocksItems) {
-                disabledNamesList.add(s);
-            }
+            disabledNamesList.addAll(Arrays.asList(disabledBlocksItems));
 
             speedLimitDimList.clear();
             for (int i : speedDimBlackList) {

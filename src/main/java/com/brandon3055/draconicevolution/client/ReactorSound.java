@@ -10,9 +10,9 @@ import net.minecraft.util.ResourceLocation;
  * Created by brandon3055 on 4/10/2015.
  */
 public class ReactorSound extends PositionedSound implements ITickableSound {
-    private static ResourceLocation sound = new ResourceLocation(References.RESOURCESPREFIX + "coreSound");
+    private static final ResourceLocation sound = new ResourceLocation(References.RESOURCESPREFIX + "coreSound");
     public boolean donePlaying = false;
-    private TileReactorCore tile;
+    private final TileReactorCore tile;
 
     public ReactorSound(TileReactorCore tile) {
         super(sound);

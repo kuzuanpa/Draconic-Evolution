@@ -25,8 +25,8 @@ public class DraconiumItemBlock extends ItemBlock implements IEnergyContainerIte
         setHasSubtypes(true);
     }
 
-    protected int capacity = BalanceConfigHandler.draconiumBlockEnergyToChange;
-    protected int maxReceive = BalanceConfigHandler.draconiumBlockChargingSpeed;
+    protected final int capacity = BalanceConfigHandler.draconiumBlockEnergyToChange;
+    protected final int maxReceive = BalanceConfigHandler.draconiumBlockChargingSpeed;
     protected int maxExtract = BalanceConfigHandler.draconiumBlockChargingSpeed;
 
     @SuppressWarnings("unchecked")

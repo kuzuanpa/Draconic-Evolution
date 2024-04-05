@@ -18,20 +18,21 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SideOnly(Side.CLIENT)
 public class GUIPlayerDetector extends GuiContainer {
 
-    public EntityPlayer player;
-    private TilePlayerDetectorAdvanced detector;
+    public final EntityPlayer player;
+    private final TilePlayerDetectorAdvanced detector;
     public boolean showInvSlots = true;
     private boolean editMode = false;
     private int range = 0;
-    private int maxRange = 20;
+    private final int maxRange = 20;
     private boolean whitelist = false;
     private boolean initScedualed = false;
     private int initTick = 0;
-    private String[] names = new String[42];
+    private final String[] names = new String[42];
     private GuiTextField selectedNameText;
     private int selected = -1;
     private boolean outputInverted = false;
@@ -40,8 +41,7 @@ public class GUIPlayerDetector extends GuiContainer {
         super(detector.getGuiContainer(invPlayer));
         this.inventorySlots = new ContainerPlayerDetector(invPlayer, detector, this);
 
-        for (int i = 0; i < names.length; i++)
-            names[i] = "";
+        Arrays.fill(names, "");
 
         xSize = 176;
         ySize = 198;

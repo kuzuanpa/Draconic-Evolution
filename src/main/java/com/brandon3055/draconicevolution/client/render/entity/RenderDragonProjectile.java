@@ -56,7 +56,7 @@ public class RenderDragonProjectile extends Render {
 //		GL11.glDepthMask(false);
 //		GL11.glEnable(GL11.GL_CULL_FACE);
         float f2 = entity.type == EntityDragonProjectile.MINI_CHAOS_CHASER ? entity.power / 10 : entity.power / 5;
-        GL11.glScalef(f2 / 1.0F, f2 / 1.0F, f2 / 1.0F);
+        GL11.glScalef(f2, f2, f2);
         Tessellator tessellator = Tessellator.instance;
         float f3 = 0;
         float f4 = 1;

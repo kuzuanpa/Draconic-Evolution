@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL11;
  * Created by Brandon on 30/6/2015.
  */
 public class GuiTextureButton extends GuiButton {
-    public int textureXPos;
-    public int textureYPos;
+    public final int textureXPos;
+    public final int textureYPos;
 
     public GuiTextureButton(int id, int xPos, int yPos, int textureXPos, int textureYPos, int xSise, int ySise, String text) {
         super(id, xPos, yPos, xSise, ySise, text);

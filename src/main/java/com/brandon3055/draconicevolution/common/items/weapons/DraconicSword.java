@@ -40,9 +40,9 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 public class DraconicSword extends ItemSword implements IEnergyContainerWeaponItem, IInventoryTool, IRenderTweak, IUpgradableItem, IHudDisplayItem {
-    protected int capacity = BalanceConfigHandler.draconicWeaponsBaseStorage;
-    protected int maxReceive = BalanceConfigHandler.draconicWeaponsMaxTransfer;
-    protected int maxExtract = BalanceConfigHandler.draconicWeaponsMaxTransfer;
+    protected final int capacity = BalanceConfigHandler.draconicWeaponsBaseStorage;
+    protected final int maxReceive = BalanceConfigHandler.draconicWeaponsMaxTransfer;
+    protected final int maxExtract = BalanceConfigHandler.draconicWeaponsMaxTransfer;
 
     public DraconicSword() {
         super(ModItems.AWAKENED);

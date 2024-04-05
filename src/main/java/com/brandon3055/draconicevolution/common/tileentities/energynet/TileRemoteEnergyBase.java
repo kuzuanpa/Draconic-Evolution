@@ -34,7 +34,7 @@ public abstract class TileRemoteEnergyBase extends TileObjectSync implements IRe
      * The tier of the relay (0-1)
      */
     protected int powerTier;
-    protected EnergyStorage storage = new EnergyStorage(0);
+    protected final EnergyStorage storage = new EnergyStorage(0);
     public List<LinkedEnergyDevice> linkedDevices = new ArrayList<LinkedEnergyDevice>();
     protected int lastTickEnergy;
     private int tick = 0;

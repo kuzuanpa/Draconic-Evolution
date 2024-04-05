@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by brandon3055 on 11/2/2016.
  */
 public class GuiHudConfig extends GuiScreen {
-    private GUIBase parent;
+    private final GUIBase parent;
     private GuiButton buttonHudFade;
     private GuiButton buttonArmorFade;
     private GuiButton buttonArmorNumeric;

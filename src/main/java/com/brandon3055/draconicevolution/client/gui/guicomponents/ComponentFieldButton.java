@@ -22,11 +22,11 @@ public class ComponentFieldButton extends ComponentBase {
 
     private static final ResourceLocation widgets = new ResourceLocation(References.RESOURCESPREFIX + "textures/gui/Widgets.png");
 
-    public EntityPlayer player;
-    public int slot;
-    public ItemStack stack;
-    public ItemConfigField field;
-    public GUIToolConfig gui;
+    public final EntityPlayer player;
+    public final int slot;
+    public final ItemStack stack;
+    public final ItemConfigField field;
+    public final GUIToolConfig gui;
 
     public ComponentFieldButton(int x, int y, EntityPlayer player, ItemConfigField field, GUIToolConfig gui) {
         super(x, y);
