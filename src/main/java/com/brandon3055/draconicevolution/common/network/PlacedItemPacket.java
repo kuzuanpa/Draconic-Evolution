@@ -81,7 +81,7 @@ public class PlacedItemPacket implements IMessage {
             }
 
             tile.setStack(stack.copy());
-            player.destroyCurrentEquippedItem();
+            player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
             return null;
         }
     }
