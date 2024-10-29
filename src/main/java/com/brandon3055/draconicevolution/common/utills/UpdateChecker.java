@@ -16,17 +16,17 @@ import java.net.URL;
  * Created by Brandon on 24/02/2015.
  */
 public class UpdateChecker {
-    private final UpdateCheckThread thread;
+    private final UpdateCheckThread thread = null;
     private int delay = 300;
     private boolean playerNotified = false;
 
     public UpdateChecker() {
-        thread = new UpdateCheckThread();
-        thread.start();
+    //    thread = new UpdateCheckThread();
+    //    thread.start();
     }
 
 
-    @SubscribeEvent
+    //@SubscribeEvent
     public void tickStart(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.START) return;
         if (delay > 0) {

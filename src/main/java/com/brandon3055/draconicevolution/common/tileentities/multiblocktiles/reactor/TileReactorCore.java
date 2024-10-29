@@ -130,6 +130,7 @@ public class TileReactorCore extends TileObjectSync {
         if(!isClient)return;
         reactionTemperature = 14000 + rng.nextInt(100000)/20F;
         fieldCharge = rng.nextInt((int) maxFieldCharge/20);
+        if(noHopeTimer > 2300) convertedFuel += reactorFuel/10;
     }
     @SideOnly(Side.CLIENT)
     private void updateSound() {

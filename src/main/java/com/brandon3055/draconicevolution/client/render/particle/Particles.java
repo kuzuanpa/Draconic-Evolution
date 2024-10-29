@@ -661,7 +661,7 @@ public class Particles {
         public ReactorExplosionParticle(World world, double x, double y, double z, double maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
             if (uvSphere == null)
-                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactorCoreModel.obj"));
+                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactor_core_no_shader.obj"));
             this.maxSize = maxSize;
         }
 
@@ -791,7 +791,7 @@ public class Particles {
         public ChaosImplosionParticle(World world, double x, double y, double z, double maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
             if (uvSphere == null)
-                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactorCoreModel.obj"));
+                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactor_core_no_shader.obj"));
             this.maxSize = maxSize;
         }
 
@@ -1128,7 +1128,7 @@ public class Particles {
             super(world, x, y, z, 0D, 0D, 0D);
             this.shrink = shrink;
             if (uvSphere == null)
-                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactorCoreModel.obj"));
+                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactor_core_no_shader.obj"));
             if (shrink) {
                 size = 20;
             }
@@ -1259,7 +1259,7 @@ public class Particles {
         public ArrowShockParticle(World world, double x, double y, double z, int maxSize) {
             super(world, x, y, z, 0D, 0D, 0D);
             if (uvSphere == null)
-                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactorCoreModel.obj"));
+                uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactor_core_no_shader.obj"));
             this.maxSize = maxSize / 100D;
         }
 
