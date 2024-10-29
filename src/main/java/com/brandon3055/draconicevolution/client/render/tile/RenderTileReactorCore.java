@@ -71,13 +71,13 @@ public class RenderTileReactorCore extends TileEntitySpecialRenderer {
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 200F, 200F);
 
         float timer = tile.tick /20F + 100;
-        float size = (float) Math.max(0.5F, tile.getCoreDiameter());
+        float size = (float) Math.max(0.2F, tile.getCoreDiameter());
         float t = (float) (tile.reactionTemperature / tile.maxReactTemperature);
         float intensity = t <= 0.2 ? (float) map(t, 0, 0.2, 0, 0.5) : t <= 0.75 ? (float) map(t, 0.2, 0.75, 0.5, 1.2) : (float) map(t, 0.75, 1, 1.2, 1.5);
         renderCore(timer, intensity, rotation, size);
 
         float shieldPower = (float) (tile.maxFieldCharge > 0 ? tile.fieldCharge / tile.maxFieldCharge : 0);
-        renderShield(timer, shieldPower, rotation, size * 1.03F);
+        if(shieldPower > 0)renderShield(timer, shieldPower, rotation, size * 1.03F);
 
         //Post Render
         GL11.glEnable(GL11.GL_LIGHTING);
@@ -116,7 +116,7 @@ public class RenderTileReactorCore extends TileEntitySpecialRenderer {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glEnable(GL11.GL_ALPHA_TEST);
-        GL11.glAlphaFunc(GL11.GL_GREATER, 0F);
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
         ResourceHandler.bindResource("textures/models/reactorShieldPlate.png");
         GL11.glRotatef(2343, 0.5F, 1F, 0.5F);
         GL11.glRotatef(-rotation * 2, 0.5F, 1F, 0.5F);
