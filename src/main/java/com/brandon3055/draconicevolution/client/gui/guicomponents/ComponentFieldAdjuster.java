@@ -17,7 +17,6 @@ import net.minecraft.util.StatCollector;
  * Created by Brandon on 1/01/2015.
  */
 public class ComponentFieldAdjuster extends ComponentBase {
-    private static final ResourceLocation widgets = new ResourceLocation(References.RESOURCESPREFIX + "textures/gui/Widgets.png");
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
 
     public ItemConfigField field;

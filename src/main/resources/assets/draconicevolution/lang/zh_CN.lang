@@ -529,6 +529,7 @@ gui.de.status1_5.txt=已充满
 gui.de.status2.txt=在线
 gui.de.status3.txt=停止中
 gui.de.status4.txt=无效的设置
+gui.de.status5.txt=即将失控!
 gui.de.internalStorage.txt=内部能量
 gui.de.itemStorage.txt=物品储存
 gui.de.reacTempLoadFactor.txt=这表明容器中的负载，负载越大，反应堆温度越高。反应堆温度超过8000这个数值就会快速增加

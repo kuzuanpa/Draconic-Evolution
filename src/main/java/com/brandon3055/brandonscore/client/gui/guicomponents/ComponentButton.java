@@ -14,7 +14,6 @@ import java.util.List;
  * Created by Brandon on 1/01/2015.
  */
 public class ComponentButton extends ComponentBase {
-	private static final ResourceLocation widgets = new ResourceLocation("brandonscore:textures/gui/Widgets.png");
 	protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
 
 

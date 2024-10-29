@@ -27,7 +27,7 @@ public class RenderTileEnergyStorageCore extends TileEntitySpecialRenderer {
 
     @Override
     public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float timeSinceLastTick) {
-        if (tile == null || !(tile instanceof TileEnergyStorageCore)) return;
+        if (!(tile instanceof TileEnergyStorageCore)) return;
         TileEnergyStorageCore core = (TileEnergyStorageCore) tile;
         if (!core.isOnline()) return;
         float scale = 0;

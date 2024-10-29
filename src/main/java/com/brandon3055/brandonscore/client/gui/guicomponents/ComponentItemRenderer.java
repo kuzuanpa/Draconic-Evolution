@@ -1,5 +1,6 @@
 package com.brandon3055.brandonscore.client.gui.guicomponents;
 
+import com.brandon3055.draconicevolution.common.lib.References;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -9,7 +10,7 @@ import org.lwjgl.opengl.GL11;
  * Created by Brandon on 31/12/2014.
  */
 public class ComponentItemRenderer extends ComponentBase {
-	private static final ResourceLocation texture = new ResourceLocation("brandonscore:textures/gui/Widgets.png");
+	private static final ResourceLocation texture = new ResourceLocation(References.RESOURCESPREFIX +"textures/gui/Widgets.png");
 
 	final ItemStack stack;
 	public ComponentItemRenderer(int x, int y, ItemStack stack) {

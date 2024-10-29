@@ -18,7 +18,7 @@ public class RenderEntityChaosVortex extends Render {
     public static IModelCustom uvSphere;
 
     public RenderEntityChaosVortex() {
-        uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactorCoreModel.obj"));
+        uvSphere = AdvancedModelLoader.loadModel(new ResourceLocation(References.MODID.toLowerCase(), "models/reactor_core_no_shader.obj"));
     }
 
     public void doRender(EntityChaosVortex entity, double x, double y, double z, float f1, float tick) {

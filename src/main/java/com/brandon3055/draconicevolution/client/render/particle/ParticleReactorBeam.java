@@ -66,6 +66,7 @@ public class ParticleReactorBeam extends EntityFX {
         tessellator.draw();
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_CULL_FACE);
+        GL11.glEnable(GL11.GL_BLEND);
         GL11.glAlphaFunc(GL11.GL_GREATER, 0.0F);
 
         float xx = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) partialTick - interpPosX);

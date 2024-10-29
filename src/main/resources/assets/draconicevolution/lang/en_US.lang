@@ -537,6 +537,7 @@ gui.de.status1_5.txt=CHARGED
 gui.de.status2.txt=ONLINE
 gui.de.status3.txt=STOPPING
 gui.de.status4.txt=INVALID SETUP
+gui.de.status5.txt=OUT OF CONTROL!
 gui.de.internalStorage.txt=Internal Storage
 gui.de.itemStorage.txt=Item Storage
 gui.de.reacTempLoadFactor.txt=This shows how much load is being placed on the containment field by the reactors temperature. If the reactor temp passes 8,000 this will increase exponentially.

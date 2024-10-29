@@ -28,17 +28,14 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Brandon on 16/6/2015.
  */
 public class TileReactorCore extends TileObjectSync {
     public static final int MAX_SLAVE_RANGE = 10;
-    public static final int STATE_OFFLINE = 0;
-    public static final int STATE_START = 1;
-    public static final int STATE_ONLINE = 2;
-    public static final int STATE_STOP = 3;
-    public static final int STATE_INVALID = 4;
+    public static final int STATE_OFFLINE = 0, STATE_START = 1, STATE_ONLINE = 2, STATE_STOP = 3, STATE_INVALID = 4, STATE_NOHOPE=5;
 
     public int reactorState = 0;
     public float renderRotation = 0;
@@ -54,7 +51,7 @@ public class TileReactorCore extends TileObjectSync {
     public double conversionUnit = 0;        //used to smooth out the conversion between int and floating point. When >= 1 minus one and convert one int worth of fuel
 
     public double reactionTemperature = 20;
-    public double maxReactTemperature = 10000;
+    public double maxReactTemperature = 14000;
 
     public double fieldCharge = 0;
     public double maxFieldCharge = 0;
@@ -96,6 +93,7 @@ public class TileReactorCore extends TileObjectSync {
             renderRotation += renderSpeed;
             //LogHelper.info(renderSpeed +" "+(reactionTemperature));
             checkPlayerCollision();
+            if(reactorState == STATE_NOHOPE)noHopeUpdate(true);
             return;
         }
         //else injectEnergy(10000000);
@@ -112,11 +110,27 @@ public class TileReactorCore extends TileObjectSync {
             case STATE_STOP:
                 runTick();
                 break;
+            case STATE_NOHOPE:
+                noHopeUpdate(false);
+                break;
         }
 
         detectAndSendChanges();
     }
-
+    private static final Random rng = new Random();
+    private void noHopeUpdate(boolean isClient){
+        noHopeTimer++;
+        if(noHopeTimer > 2400){
+            //float power = 10F + Math.min(10F, ((float) (convertedFuel + reactorFuel) / 10369F) * 10F);
+            float power = 2F + (((float) (convertedFuel + reactorFuel) / 10369F) * 18F);
+            ProcessHandler.addProcess(new ReactorExplosion(worldObj, xCoord, yCoord, zCoord, power));
+            sendObjectToClient(References.INT_ID, 100, (int) (power * 10F), new NetworkRegistry.TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 512));
+            worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+        }
+        if(!isClient)return;
+        reactionTemperature = 14000 + rng.nextInt(100000)/20F;
+        fieldCharge = rng.nextInt((int) maxFieldCharge/20);
+    }
     @SideOnly(Side.CLIENT)
     private void updateSound() {
         if (reactorSound == null)
@@ -240,16 +254,14 @@ public class TileReactorCore extends TileObjectSync {
         //===========
     }
 
+    public short noHopeTimer = 0;
     private void goBoom() {
+        worldObj.createExplosion(null, xCoord, yCoord, zCoord, 5, true);
         if (!ConfigHandler.enableReactorBigBoom) {
-            worldObj.createExplosion(null, xCoord, yCoord, zCoord, 5, true);
+            worldObj.setBlockToAir(xCoord, yCoord, zCoord);
         } else {
-            //float power = 10F + Math.min(10F, ((float) (convertedFuel + reactorFuel) / 10369F) * 10F);
-            float power = 2F + (((float) (convertedFuel + reactorFuel) / 10369F) * 18F);
-            ProcessHandler.addProcess(new ReactorExplosion(worldObj, xCoord, yCoord, zCoord, power));
-            sendObjectToClient(References.INT_ID, 100, (int) (power * 10F), new NetworkRegistry.TargetPoint(worldObj.provider.dimensionId, xCoord, yCoord, zCoord, 512));
+            reactorState=STATE_NOHOPE;
         }
-        worldObj.setBlockToAir(xCoord, yCoord, zCoord);
     }
 
 
@@ -375,7 +387,7 @@ public class TileReactorCore extends TileObjectSync {
 
     public boolean canStop() {
         validateStructure();
-        return reactorState != STATE_OFFLINE && isStructureValid;
+        return reactorState != STATE_OFFLINE && reactorState != STATE_NOHOPE && isStructureValid;
     }
 
 
@@ -561,6 +573,7 @@ public class TileReactorCore extends TileObjectSync {
         if (stabilizerList.tagCount() > 0) compound.setTag("Stabilizers", stabilizerList);
 
         compound.setByte("State", (byte) reactorState);
+        compound.setShort("noHopeTimer",  noHopeTimer);
         compound.setBoolean("isStructureValid", isStructureValid);
         compound.setBoolean("startupInitialized", startupInitialized);
         //compound.setBoolean("isActive", isActive);
@@ -589,6 +602,7 @@ public class TileReactorCore extends TileObjectSync {
         }
 
         reactorState = compound.getByte("State");
+        noHopeTimer = compound.getByte("noHopeTimer");
         isStructureValid = compound.getBoolean("isStructureValid");
         startupInitialized = compound.getBoolean("startupInitialized");
         //isActive = compound.getBoolean("isActive");

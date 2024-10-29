@@ -1,5 +1,6 @@
 package com.brandon3055.brandonscore.client.gui.guicomponents;
 
+import com.brandon3055.draconicevolution.common.lib.References;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
@@ -8,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class ComponentSlotBackground extends ComponentBase{
 
-	private static final ResourceLocation widgets = new ResourceLocation("brandonscore:textures/gui/Widgets.png");
+	private static final ResourceLocation widgets = new ResourceLocation(References.RESOURCESPREFIX +"textures/gui/Widgets.png");
 
 	public ComponentSlotBackground(int x, int y) {
 		super(x, y);

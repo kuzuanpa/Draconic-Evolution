@@ -33,7 +33,7 @@ public class RenderReactorCore implements IItemRenderer {
 
         ResourceHandler.bindResource("textures/blocks/draconic_block_blank.png");
         GL11.glScaled(0.5, 0.5, 0.5);
-        RenderTileReactorCore.reactorModel.renderAll();
+        RenderTileReactorCore.reactorModelNoShader.renderAll();
 
         GL11.glPopMatrix();
     }
