@@ -44,7 +44,7 @@ apply plugin: 'forge'
 
 version = "${project.minecraft_version}-${project.mod_version}"
 group = "com.brandon3055.draconicevolution"
-archivesBaseName = "Draconic-Evolution"
+archivesBaseName = "Draconic-Evolution-TFRU"
 
 minecraft {
     version = project.minecraft_version + "-" + project.forge_version
