@@ -13,12 +13,13 @@ buildscript {
     }
 
     dependencies {
-        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
-            changing = true
-        }
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') 
     }
 }
 
+plugins {
+    id 'maven-publish'
+}
 repositories {
     mavenCentral()
     maven {
@@ -42,7 +43,7 @@ repositories {
 
 apply plugin: 'forge'
 
-version = "${project.minecraft_version}-${project.mod_version}"
+version = "${project.mod_version}"
 group = "com.brandon3055.draconicevolution"
 archivesBaseName = "Draconic-Evolution-TFRU"
 
@@ -84,20 +85,46 @@ idea {
     }
 }
 
-task deobfJar(type: Jar) { // Generate deobfuscated
-    from sourceSets.main.output
-    classifier = 'deobf'
-}
-
-task sourceJar(type: Jar) { // Generate sources
+// This task creates a .jar file containing the source code of this mod.
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
     from sourceSets.main.allSource
-    classifier = 'sources'
 }
 
-tasks.build.dependsOn('sourceJar', 'deobfJar')
+// This task creates a .jar file containing a deobfuscated version of this mod, for other developers to use in a development environment.
+task devJar(type: Jar) {
+    classifier = "dev"
+    from sourceSets.main.output
+}
+
+// This block configures any maven publications you want to make.
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'cn.kuzuanpa'
+            artifactId = 'Draconic-Evolution-TFRU'
+            // Add any other artifacts here that you would like to publish!
+            artifact(jar) {
+                builtBy build
+            }
+            artifact(sourcesJar) {
+                builtBy sourcesJar
+            }
+            artifact(devJar) {
+                builtBy devJar
+            }
+        }
+    }
+
+    // This block selects the repositories you want to publish to.
+    repositories {
+        mavenLocal()
+        // Add the repositories you want to publish to here.
+    }
+}
 
 artifacts {
-   archives deobfJar
-   archives sourceJar
+   archives devJar
+   archives sourcesJar
    archives jar
 }
